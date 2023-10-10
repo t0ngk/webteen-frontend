@@ -30,15 +30,6 @@
             like: 567,
 		}
 	];
-
-    let number = 0;
-	let locale = "en";
-
-	$: formattedNumber = number.toLocaleString(locale, {
-		notation: "compact",
-		compactDisplay: "short"
-	});
-
 </script>
   
 {#each bookExamples as book}
