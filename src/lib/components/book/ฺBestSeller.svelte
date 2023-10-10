@@ -10,6 +10,7 @@
             chapter: 105,
             view: 1234,
             like: 20000,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU',
 		},
 		{
 			type: 'Comedy',
@@ -19,6 +20,7 @@
             chapter: 40,
             view: 5000,
             like: 1900,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU',
 		},
 		{
 			type: 'Action',
@@ -28,14 +30,15 @@
             chapter: 9,
             view: 300,
             like: 567,
+            image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg',
 		}
 	];
 </script>
   
 {#each bookExamples as book}
-    <div class="flex flex-row p-2 bg-transparent">
+    <div class="flex flex-row p-2 py-3 bg-transparent">
         <div class="flex flex-wrap justify-center max-h-2">
-            <img src="https://tailwindcss.com/img/card-left.jpg" alt="" 
+            <img src={book.image} alt="" 
             class="rounded-[10%] w-28 h-28 object-cover"/> 
         </div>
         <div class=" pl-5 flex flex-col justify-center w-auto">
