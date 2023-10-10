@@ -6,7 +6,7 @@
             type: 'Mystery',
 			name: 'No Name 404',
             earn: 1200,
-            date: '12/03/2023',
+            date: '12/03/2016',
             chapter: 105,
             view: 1234,
             like: 20000,
@@ -16,7 +16,7 @@
 			type: 'Comedy',
 			name: 'อ่านฉันสิ',
             earn: 999,
-            date: '12/03/2023',
+            date: '10/09/2023',
             chapter: 40,
             view: 5000,
             like: 1900,
@@ -26,7 +26,7 @@
 			type: 'Action',
 			name: 'กระต่ายกับเต่า',
             earn: 41,
-            date: '12/03/2023',
+            date: '09/12/2020',
             chapter: 9,
             view: 300,
             like: 567,
@@ -55,7 +55,7 @@
                         <p class="text-[#818181] text-xs">{book.chapter}</p>
                     </div>
                     <div class="flex ml-2">
-                        <Icon icon="mdi:eye" color="#818181" style="font-size: 13px" class="mt-[8%] mr-1"/>
+                        <Icon icon="mdi:eye" color="#818181" style="font-size: 13px" class="mt-[4%] mr-1"/>
                         <p class="text-[#818181] text-xs">{book.view >= 1000 ? (book.view /1000) + 'K' : book.view}</p>
                     </div>
                     <div class="flex ml-2">
