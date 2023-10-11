@@ -1,7 +1,9 @@
 <script>
 	import Search from '$lib/components/admin/Search.svelte';
+	import Summary from '$lib/components/admin/Summary.svelte';
 </script>
-<div class="h-full w-full p-2">
+<div class="h-full w-full p-2 py-4 px-4">
 	<Search/>
-	<h1 class="text-5xl">Home admin</h1>
+	<p class="text-3xl">Welcome, Admin!</p>
+	<Summary/>
 </div>
