@@ -55,8 +55,8 @@
 					on:click={() => {
 						active = item;
 					}}
-					class={`border-b-[2px] py-1 px-2 text-base font-medium ${
-						active == item ? 'border-[#F7B155] text-[#F7B155]' : 'border-b-[0px] text-[#979797]'
+					class={` py-1 px-2 text-base font-medium ${
+						active == item ? 'border-[#F7B155] text-[#F7B155] border-b-[2px]' : 'border-b-[0px] text-[#979797]'
 					}`}>{item.name}</button
 				>
 			</div>
