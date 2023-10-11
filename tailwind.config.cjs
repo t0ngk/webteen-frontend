@@ -3,7 +3,10 @@ const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {},
+		// fontSize: {
+		// 	xxs: '0.5rem',
+		// }
 	},
 
 	plugins: []
