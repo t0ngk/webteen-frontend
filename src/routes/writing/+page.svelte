@@ -5,7 +5,7 @@
 </script>
 
 <div class=" h-full w-full px-2">
-	<div class="h-[115px]">
+	<div class="h-[115px] justify-between">
 		<Header />
 		<button
 			on:click={() => {
