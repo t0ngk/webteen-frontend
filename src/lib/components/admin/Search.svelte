@@ -1,11 +1,21 @@
 <script>
-	import DrawerNavigation from './DrawerNavigation .svelte';
+	import DrawerNavigation from './DrawerNavigation.svelte';
+	let openDrawer = false;
 </script>
 
+<DrawerNavigation bind:open={openDrawer} />
 <div class="flex">
 	<!-- Triple bar svg -->
 	<div class="flex-none w-50 h-14 ... z-10 mt-2">
-		<DrawerNavigation />
+		<button on:click={() => openDrawer = true}>
+			<div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 60 60">
+					<rect width="40" height="4" rx="2.5" ry="2.5" fill="#98A2B3" />
+					<rect y="15" width="40" height="4" rx="2.5" ry="2.5" fill="#98A2B3" />
+					<rect y="30" width="40" height="4" rx="2.5" ry="2.5" fill="#98A2B3" />
+				</svg>
+			</div>
+		</button>
 	</div>
 	<!-- Search bar -->
 	<div class="flex-1 ...">
@@ -39,7 +49,7 @@
 	</div>
 	<!-- Noti -->
 	<div class="flex-none w-14 h-14 ...">
-		<div class="relative  mt-2 mr-4">
+		<div class="relative mt-2 mr-4">
 			<div
 				class="absolute bottom-auto left-auto right-0 top-0 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-50 scale-y-50 rounded-full bg-pink-700 p-2.5 text-xs"
 			/>
