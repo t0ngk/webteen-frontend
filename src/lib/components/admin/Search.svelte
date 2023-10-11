@@ -4,7 +4,7 @@
 
 <div class="flex">
 	<!-- Triple bar svg -->
-	<div class="flex-none w-14 h-14 ... z-10">
+	<div class="flex-none w-50 h-14 ... z-10 mt-2">
 		<DrawerNavigation />
 	</div>
 	<!-- Search bar -->

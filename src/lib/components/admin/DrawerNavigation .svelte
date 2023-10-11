@@ -1,11 +1,5 @@
 <script>
-	import {
-		Drawer,
-		Button,
-		CloseButton,
-		Sidebar,
-		SidebarWrapper
-	} from 'flowbite-svelte';
+	import { Drawer, Button, CloseButton, Sidebar, SidebarWrapper } from 'flowbite-svelte';
 	import { sineIn } from 'svelte/easing';
 	import { goto } from '$app/navigation';
 	import Icon from '@iconify/svelte';
@@ -16,33 +10,33 @@
 		easing: sineIn
 	};
 
-	// export let urlPath = '/';
+	export let urlPath = '/';
 
 	const drawers = [
 		{
 			name: 'Written',
 			icon: 'fluent:note-edit-20-regular',
-			path: '/written'
+			path: '/admin/writtenview'
 		},
 		{
 			name: 'Report',
 			icon: 'octicon:report-24',
-			path: '/report'
+			path: '/admin/report'
 		},
 		{
 			name: 'Withdraw',
 			icon: 'uil:money-withdrawal',
-			path: '/withdraw'
+			path: '/admin/withdraw'
 		},
 		{
 			name: 'Writer',
 			icon: 'fluent:notepad-person-24-regular',
-			path: '/writer'
+			path: '/admin/writer'
 		}
 	];
 </script>
 
-<div class="text-center ">
+<div class="text-center">
 	<Button on:click={() => (hidden2 = false)}>
 		<!-- Triple bar svg -->
 		<div>
@@ -72,14 +66,21 @@
 			<div class="py-4 overflow-y-auto">
 				<ul class="space-y-2 font-medium">
 					{#each drawers as drawer}
-						<li>
+						<button
+							on:click={() => {
+								goto(drawer.path);
+							}}
+							class={`flex flex-col justify-center items-center transition duration-100 active:scale-95 ${
+								urlPath == drawer.path ? 'text-[#F7B155]' : 'text-[#A1A1A1]'
+							}`}
+						>
 							<div
 								class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700 group"
 							>
 								<Icon icon={drawer.icon} color="white" width="35" height="35" />
 								<span class="ml-3">{drawer.name}</span>
 							</div>
-						</li>
+						</button>
 					{/each}
 				</ul>
 			</div>
