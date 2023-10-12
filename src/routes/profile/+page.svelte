@@ -1,6 +1,8 @@
 <script>
 	import HeaderProfile from '$lib/components/profile/headerProfile.svelte';
 	import Icon from '@iconify/svelte';
+	import { Button } from 'flowbite-svelte';
+	import { goto } from '$app/navigation';
 	// import walletLinear from '@iconify/icons-solar/wallet-linear';
 </script>
 
@@ -16,10 +18,14 @@
 				<p>Level : Royal</p>
 			</div>
 		</div>
-		<div class="flex flex-row items-center">
+		<Button class="flex flex-row items-center" 
+			on:click={() => {
+			goto("/myCoin");
+		}}
+		>
 			<Icon icon="circum:bitcoin" color="#f7b155" class="h-[30px] w-[30px]" />
 			<h3 class="pl-1"><b>9999</b></h3>
-		</div>
+		</Button>
 		
 	</div>
 	<div class="h-[115px]">
