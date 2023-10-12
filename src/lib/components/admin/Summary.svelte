@@ -31,10 +31,10 @@
 				<div class="box-border rounded text-black font-bold px-2 py-1 bg-[#F7B155]">{summary.number}</div>
 				<p class="text-1xl px-3 pt-1">{summary.name}</p>
 			</div>
-			<div class="basis-2/4" />
+			<div class="basis-3/4" />
 			<div class="basis-1/4 pt-1">
 				<div
-					class="box-border rounded-xl font-bold px-5 border-[#F7B155] border-2 text-[#F7B155]"
+					class="box-border rounded-xl font-bold px-5 border-[#F7B155] border-2 text-[#F7B155] text-justify"
 				>
 					{summary.sum}
 				</div>

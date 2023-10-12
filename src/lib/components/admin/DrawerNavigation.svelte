@@ -6,6 +6,11 @@
 
 	const drawers = [
 		{
+			name: 'Home',
+			icon: 'fluent:home-16-regular',
+			path: '/admin'
+		},
+		{
 			name: 'Written',
 			icon: 'fluent:note-edit-20-regular',
 			path: '/admin/writtenview'
