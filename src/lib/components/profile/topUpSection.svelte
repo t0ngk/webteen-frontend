@@ -37,7 +37,7 @@
                 <Icon icon="circum:bitcoin" color="#f7b155" class="h-[30px] w-[30px]" />
             </div>
             <div class="pl-3">
-                <p><b>{item.coinNumber}</b></p>
+                <p class="mb-1"><b>{item.coinNumber}</b></p>
                 <div class="flex items-center">
                     <p class="text-xs">{item.date}</p>
                     <p class="pl-2 text-xs">{item.time}</p>
