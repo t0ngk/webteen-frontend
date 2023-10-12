@@ -42,7 +42,7 @@
 	let active = nav === '/writing' ? navWriting[0] : navCategory[0];
 </script>
 
-<div >
+<div>
 	<div class="sticky top-0 pt-4 bg-[#161218]">
 		<div class="p-2 realtive">
 			<h1 class="text-2xl font-semibold tracking-[1px]">

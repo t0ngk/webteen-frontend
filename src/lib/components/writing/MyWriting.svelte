@@ -1,6 +1,10 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import { Button } from 'flowbite-svelte';
+	import Popup from '../Popup.svelte';
+	import AddWritingContent from './popupContent/AddWritingContent.svelte';
+
+	let isPopupOpen = false;
 
 	const bookExamples = [
 		{
@@ -35,9 +39,9 @@
 	];
 </script>
 
-<div class="container p-2">
+<div class="container p-2 relative">
 	<div class="flex justify-center">
-		<h1 class="text-xl font-semibold mt-[40px] mb-[20px]">Manage Writing</h1>
+		<h1 class="text-[20px] font-semibold mt-[40px] mb-[20px]">Manage Writing</h1>
 	</div>
 	<div class="">
 		<div class="flex justify-between">
@@ -45,7 +49,12 @@
 				<p class="text-black text-[10px] font-medium">All</p>
 				<Icon icon="octicon:triangle-up-16" color="black" class="rotate-180" />
 			</Button>
-			<Button class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1">
+			<Button
+				class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1"
+				on:click={() => {
+					isPopupOpen = true;
+				}}
+			>
 				<Icon icon="ic:round-plus" color="black" class="rotate-180" />
 				<p class="text-black text-[10px] font-medium">Add Writing</p>
 			</Button>
@@ -119,4 +128,8 @@
 			</tbody>
 		</table>
 	</div>
+
+	<Popup bind:isPopupOpen title={'New Writing'}>
+		<AddWritingContent />
+	</Popup>
 </div>
