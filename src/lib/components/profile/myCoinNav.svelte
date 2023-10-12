@@ -3,6 +3,7 @@
     import Icon from '@iconify/svelte';
 	import TopUp from './topUpSection.svelte';
 	import PayMents from './payMentSection.svelte';
+	import { goto } from '$app/navigation';
 
     const myCoinNav = [
 		{
@@ -19,6 +20,20 @@
 </script>
 
 <div>
+	<div class="p-2 mt-2 flex items-center">
+		<button
+			on:click={() => {
+				goto("/profile");
+			}}
+		>
+			<Icon icon="ion:chevron-back" color="white" 
+				class="text-[30px] absolute top-4"
+			/>
+		</button>
+		<p class="text-lg font-semibold text-center flex-grow">
+			My Coin
+		</p>
+	</div>
 	<div class="p-2 flex justify-between mt-2 mb-2">
 		<div class="flex items-center">
 			<Icon icon="circum:bitcoin" color="#f7b155" class="h-[30px] w-[30px]" />
