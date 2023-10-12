@@ -21,8 +21,8 @@
     ];
   </script>
   
-  <table class="w-full text-sm text-left text-white border-collapse border-t">
-    <thead class="text-xs text-[#F7B155] uppercase border-b text-center">
+  <table class="w-full text-sm text-left text-white border-collapse border-t border-gray-500">
+    <thead class="text-xs text-[#F7B155] uppercase border-b text-center border-gray-500">
       <tr>
         <th scope="col" class="px-8 py-3 text-left"> User </th>
         <th scope="col" class="px-6 py-3"> Date </th>
@@ -43,7 +43,7 @@
             </div>
           </td>
           <td class="px-6 py-4 ">{item.date}</td>
-          <td class="flex items-center justify-center mt-3">
+          <td class="flex items-center justify-center mt-6">
             {#if item.status === 'Approved'}
               <div class="w-[80px] h-[25px] bg-[#38920D] rounded-full text-white font-semibold flex items-center justify-center">
                 {item.status}
