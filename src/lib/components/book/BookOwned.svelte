@@ -38,7 +38,7 @@
 			like: 567,
 			writer: 'lungling',
 			image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg'
-		},	
+		},		
 		
 	];
 </script>
