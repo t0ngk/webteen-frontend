@@ -46,7 +46,7 @@
                         <p class="text-base">Author</p>
                     </div>
                     <div class="justify-end">
-                        <Icon icon="ph:heart-fill" color="#F7B155" class="w-[25px] h-[25px]" />
+                        <p class="text-base">#37</p>
                     </div>
                 </div>
             </div>

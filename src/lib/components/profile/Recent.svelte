@@ -1,3 +1,8 @@
-<div class="h-full w-full p-2">
-    <h1 class="text-xl">Recent</h1>
+<script>
+    import Recent from "../book/RecentTemplate.svelte";
+</script>
+
+<div class="h-full w-full">
+    <!-- <h1 class="text-xl">Favorite</h1> -->
+    <Recent />
 </div>
