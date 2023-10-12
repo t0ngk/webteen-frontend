@@ -19,15 +19,15 @@
 </script>
 
 <div class="mt-8">
-	<div class="flex flex-row justify-between border-b-[1px] border-[#373739a8] px-20">
+	<div class="flex flex-row justify-between px-20">
 		{#each myCoinNav as item}
 			<div>
 				<button
 					on:click={() => {
 						active = item;
 					}}
-					class={` py-1 px-2 text-base font-medium ${
-						active == item ? 'border-[#F7B155] text-[#F7B155] border-b-[2px]' : 'border-b-[0px] text-[#979797]'
+					class={`rounded-xl px-4 text-base font-medium ${
+						active == item ? 'border-[#F7B155] bg-[#F7B155] text-slate-950' : 'border-b-[0px] text-[#979797]'
 					}`}>{item.name}</button>
 			</div>
 		{/each}
