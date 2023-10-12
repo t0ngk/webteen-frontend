@@ -51,16 +51,16 @@
     >
         <ul class="py-2 text-sm text-black" aria-labelledby="dropdownDefaultButton">
             <li>
-                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Dashboard</a>
+                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Punim</a>
             </li>
             <li>
-                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Settings</a>
+                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Punim</a>
             </li>
             <li>
-                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Earnings</a>
+                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Punim</a>
             </li>
             <li>
-                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Sign out</a>
+                <a href="a" class="block px-4 py-2 hover:bg-[#F7B155]  dark:hover:text-black">Punim</a>
             </li>
         </ul>
     </div>
