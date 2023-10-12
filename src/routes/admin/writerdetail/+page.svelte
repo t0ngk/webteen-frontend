@@ -3,5 +3,5 @@
 </script>
 <div class="h-full w-full p-2">
 	<Search/>
-	<h1 class="text-5xl">Writerdetail admin</h1>
+	<h1 class="text-5xl">Writerdetail</h1>
 </div>
