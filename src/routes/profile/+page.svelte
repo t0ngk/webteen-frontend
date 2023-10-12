@@ -13,7 +13,11 @@
 			<div class="pl-3">
 				<p class="flex">
 					<b>username</b>
-					<Icon icon="mdi:pencil-outline" color="white" class="h-[25px] w-[25px] pl-2 " />
+					<Button class="px-2" on:click={() => {
+						goto("/editProfile");
+					}}>
+					<Icon icon="mdi:pencil-outline" color="white" class="h-[22px] w-[22px] hover:bg-amber-300" />
+					</Button>
 				</p>
 				<p>Level : Royal</p>
 			</div>
