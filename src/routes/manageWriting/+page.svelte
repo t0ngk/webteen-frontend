@@ -1,19 +1,13 @@
 <script>
 	import Icon from '@iconify/svelte';
-	import { Button } from 'flowbite-svelte';
-	import Popup from '../Popup.svelte';
-	import AddWritingContent from './popupContent/AddWritingContent.svelte';
 	import { goto } from '$app/navigation';
-	import { writable } from 'svelte/store';
+	import { Button } from 'flowbite-svelte';
 
 	let isPopupOpen = false;
 
-	export let bookStore = writable();
-
-	const bookExamples = [
+	const episodeExamples = [
 		{
-			type: 'Mystery',
-			name: 'No Name 404',
+			name: 'EP1',
 			comment: 500,
 			view: 1234,
 			like: 2000,
@@ -22,8 +16,7 @@
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
 		},
 		{
-			type: 'Comedy',
-			name: 'อ่านฉันสิ',
+			name: 'EP2',
 			comment: 100,
 			view: 5000,
 			like: 1900,
@@ -32,8 +25,7 @@
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU'
 		},
 		{
-			type: 'Action',
-			name: 'กระต่ายกับเต่า',
+			name: 'EP3',
 			comment: 50,
 			view: 300,
 			like: 567,
@@ -43,16 +35,33 @@
 	];
 </script>
 
-<div class="container p-2 relative">
-	<div class="flex justify-center">
-		<h1 class="text-[20px] font-semibold mt-[40px] mb-[20px]">Manage Writing</h1>
+<div class="container p-2 mt-5">
+	<div class="flex items-center justify-between">
+		<div class="flex gap-3 items-center">
+			<button
+				on:click={() => {
+					goto('/writing');
+				}}
+			>
+				<Icon icon="ion:chevron-back" color="white" class="text-[30px]" />
+			</button>
+			<p class="text-[20px] font-semibold text-center flex-grow">Manage Writing</p>
+		</div>
+		<button class="mr-4 text-[14px] font-medium text-[#F7B155]">Edit</button>
 	</div>
-	<div class="">
-		<div class="flex justify-between">
-			<Button class="w-auto px-2 py-[3px] rounded-[5px] bg-white flex items-center gap-1">
-				<p class="text-black text-[10px] font-medium">All</p>
-				<Icon icon="octicon:triangle-up-16" color="black" class="rotate-180" />
-			</Button>
+
+	<div class="flex flex-col items-center my-8">
+		<img class="w-[150px] h-[150px] bg-[#373739] rounded-[10px]" src="" alt="" />
+		<div class="my-4 flex flex-col items-center">
+			<h1 class="text-[20px] font-semibold">Manga Name</h1>
+			<p class="text-[12px] font-normal">Type, Penname</p>
+		</div>
+		<!-- <p class="text-[14px]">Description</p> -->
+	</div>
+
+	<div class="px-2">
+		<div class="flex justify-between items-center">
+			<p class="text-[12px] font-medium text-[#F7B155]">All Episodes (4)</p>
 			<Button
 				class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1"
 				on:click={() => {
@@ -60,16 +69,16 @@
 				}}
 			>
 				<Icon icon="ic:round-plus" color="black" class="rotate-180" />
-				<p class="text-black text-[10px] font-medium">Add Writing</p>
+				<p class="text-black text-[10px] font-medium">Add Episode</p>
 			</Button>
 		</div>
+
 		<table class="grid grid-rows-7 mt-5">
 			<thead class="">
 				<tr
 					class="text-[10px] font-medium p-2 border-y-[1px] border-[#D9D9D9] flex items-center justify-between"
 				>
-					<th class="w-[100px] flex justify-start">Name</th>
-					<th class="w-10">Type</th>
+					<th class="w-[100px] flex justify-start">Episode</th>
 					<th class="w-5 flex justify-center"
 						><Icon icon="mdi:eye" color="white" style="font-size: 12px" class="" /></th
 					>
@@ -89,24 +98,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each bookExamples as book}
+				{#each episodeExamples as book}
 					<tr
 						class="flex items-center justify-between p-2 py-3 text-[8px] border-b-[1px] border-[#ffffff5d]"
 					>
 						<td class="w-[100px] flex items-center">
-							<Button
-								class="p-0"
-								on:click={() => {
-									bookStore.set(book.name);
-									goto('/manageWriting');
-								}}
-							>
-								<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
-								<p class="text-[8px] font-medium ml-2">{book.name}</p>
-							</Button>
-						</td>
-						<td class="w-10 flex justify-center">
-							<p>{book.type}</p>
+							<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
+							<p class="text-[8px] font-medium ml-2">{book.name}</p>
 						</td>
 						<td class="w-5 flex justify-center">
 							<p>{book.view}K</p>
@@ -140,8 +138,4 @@
 			</tbody>
 		</table>
 	</div>
-
-	<Popup bind:isPopupOpen title={'New Writing'}>
-		<AddWritingContent />
-	</Popup>
 </div>
