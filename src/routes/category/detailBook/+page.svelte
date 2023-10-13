@@ -1,6 +1,5 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	// export let data;
 	import Episode from '$lib/components/book/Episode.svelte';
 	import Icon from '@iconify/svelte';
 </script>
