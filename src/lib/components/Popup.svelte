@@ -7,7 +7,7 @@
 </script>
 
 {#if isPopupOpen}
-	<div class="absolute top-8 left-5 bg-white rounded-[10px] w-[330px] h-auto p-8">
+	<div class="absolute top-20 left-6 bg-white rounded-[10px] w-[330px] h-auto p-8">
 		<div class="text-black flex justify-between items-center">
 			<h1 class="text-[20px] font-bold">{title}</h1>
 			<Button

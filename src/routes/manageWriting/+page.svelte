@@ -2,6 +2,8 @@
 	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import { Button } from 'flowbite-svelte';
+	import Popup from '../../lib/components/Popup.svelte';
+	import NewEpisodeContent from '$lib/components/writing/popupContent/NewEpisodeContent.svelte';
 
 	let isPopupOpen = false;
 
@@ -35,7 +37,7 @@
 	];
 </script>
 
-<div class="container p-2 mt-5">
+<div class="container p-2 mt-5 relative">
 	<div class="flex items-center justify-between">
 		<div class="flex gap-3 items-center">
 			<button
@@ -138,4 +140,8 @@
 			</tbody>
 		</table>
 	</div>
+
+	<Popup bind:isPopupOpen title={'New Episode'}>
+		<NewEpisodeContent />
+	</Popup>
 </div>
