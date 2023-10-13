@@ -21,7 +21,7 @@
 		},
 		{
 			image: 'https://cisalvvf.org/wp-content/uploads/2022/11/dog.jpg', // เพิ่ม path ของรูปภาพที่นี้
-			username: 'PunimJIJI',
+			username: 'PunimJIEI',
 			Text: 'Incididunt in aliquip duis aliqua ea veniam mollit eiusmod officia mollit et nostrud.',
 			date: '6 June 2024'
 		}
