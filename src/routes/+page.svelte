@@ -1,22 +1,49 @@
 <script>
 	import Recommend from '$lib/components/book/Recommend.svelte';
 	import Icon from '@iconify/svelte';
+	import { fade } from 'svelte/transition';
+
+	const carouselPhotos = [
+		'https://picsum.photos/300/200?random=1',
+		'https://picsum.photos/300/200?random=2',
+		'https://picsum.photos/300/200?random=3'
+	];
+
+	let index = 0;
+
+	const next = () => {
+		index = (index + 1) % carouselPhotos.length;
+	};
+	const back = () => {
+		index = (index - 1) % carouselPhotos.length;
+	};
 </script>
 
 <div class="h-full w-full">
-	<div class="bg-gray-700 w-full h-72">
-		<Icon
-			icon="ic:sharp-search"
-			color="#F7B155"
-			style="font-size: 30px"
-			class="absolute top-3 right-3"
-		/>
-		<!-- <img
-			src="https://cdn.discordapp.com/attachments/895533055928852502/1162025735574278255/14517729691676530064.png?ex=653a6fcc&is=6527facc&hm=2081917ce025af5a2012a82945311342e79ae89eceea5ad6eb50ef3fd4277fef&"
-			alt=""
-			class="w-full h-full object-cover"
-		/> -->
+	<!-- carousel -->
+	<div class="bg-gray-700 w-full h-72 flex justify-end items-center">
+		{#each [carouselPhotos[index]] as src (index)}
+			<img transition:fade {src} alt="" class="object-cover h-72 w-full absolute" />
+		{/each}
+		<div class="absolute top-3 right-3 flex justify-center items-center">
+			<Icon
+				icon="ic:sharp-search"
+				color="#F7B155"
+				style="font-size: 30px"
+				class="absolute opacity-100"
+			/>
+			<div class="h-10 w-10 rounded-full bg-black bg-opacity-50" />
+		</div>
+		<button on:click={next} class="absolute">
+			<Icon icon="pajamas:chevron-right" color="white" style="font-size: 35px" />
+		</button>
+		<div class="flex justify-start items-center w-full h-72">
+			<button on:click={back} class="absolute">
+				<Icon icon="pajamas:chevron-left" color="white" style="font-size: 35px" />
+			</button>
+		</div>
 	</div>
+
 	<h1 class="text-lg font-semibold py-3 p-3">Recommend for you</h1>
 	<div class="h-full w-full flex justify-center">
 		<div class="flex flex-row gap-3">
