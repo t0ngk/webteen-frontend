@@ -23,7 +23,7 @@
 		{
 			name: 'Withdraw',
 			icon: 'uil:money-withdrawal',
-			path: '/admin/withdraw'
+			path: '/admin/FilteredData'
 		},
 		{
 			name: 'Writer',

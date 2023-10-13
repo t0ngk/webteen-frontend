@@ -1,5 +1,5 @@
 <script>
-import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
 	const writen = [
 		{
@@ -22,8 +22,6 @@ import { goto } from '$app/navigation';
 			status: 'Waiting'
 		}
 	];
-
- 
 </script>
 
 <table class="w-full text-sm text-left text-white border-collapse border-t border-gray-500">
@@ -32,7 +30,7 @@ import { goto } from '$app/navigation';
 			<th scope="col" class="px-8 py-3 text-left"> User </th>
 			<th scope="col" class="px-6 py-3"> Date </th>
 			<th scope="col" class="px-6 py-3"> Status </th>
-      <th scope="col" class="px-6 py-3"></th>
+			<th scope="col" class="px-6 py-3" />
 		</tr>
 	</thead>
 	<tbody class="text-center">
@@ -70,11 +68,15 @@ import { goto } from '$app/navigation';
 						</div>
 					{/if}
 				</td>
-        <td>
-          <button on:click={() => {goto("/admin/writerdetail");}}>
-            <p class="hover:text-[#F7B155]">View</p>
-          </button>
-        </td>
+				<td>
+					<button
+						on:click={() => {
+							goto('/admin/writerdetail');
+						}}
+					>
+						<p class="hover:text-[#F7B155]">View</p>
+					</button>
+				</td>
 			</tr>
 		{/each}
 	</tbody>
