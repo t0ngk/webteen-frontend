@@ -6,16 +6,20 @@
 
 <div class="h-full w-full">
 	<div class="sticky top-0">
-		<div class="bg-gray-600 w-full h-72 p-6 opacity-75 absolute">
-			<div class="flex justify-between w-full">
+		<div class="bg-black w-full h-72 p-3 bg-opacity-40 absolute">
+			<div class="flex justify-between w-full mt-3">
 				<Icon icon="pajamas:chevron-left" color="white" style="font-size: 35px" />
 				<Icon icon="ph:heart-bold" color="white" style="font-size: 23px" />
 			</div>
 
-			<div class="pl-3">
-				<p class="text-xs text-gray-200 mt-7">Type</p>
+			<div class="pl-3 w-5/6">
+				<p class="text-sm text-gray-200 mt-7">Type</p>
 				<p class="text-xl font-medium">Comic Name</p>
-				<p>lorwwnefwpoffesgneofwmic nernioj</p>
+				<p class="line-clamp-4 text-sm">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam aut culpa, doloremque
+					ducimus dolore distinctio temporibus enim rerum repellendus a quas! Recusandae cupiditate
+					fugiat omnis laboriosam eum labore nulla optio?
+				</p>
 			</div>
 		</div>
 		<img

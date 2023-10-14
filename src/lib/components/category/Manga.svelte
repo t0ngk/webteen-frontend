@@ -1,6 +1,6 @@
 <script>
+	import BestSellerReader from '../book/BestSellerReader.svelte';
 	import Recommend from '../book/Recommend.svelte';
-	import BestSeller from '../book/ฺBestSeller.svelte';
 </script>
 
 <div class="h-full w-full p-2">
@@ -10,6 +10,6 @@
 	</div>
 	<h1 class="text-xl font-medium mt-2">All Manga</h1>
 	<div>
-		<BestSeller />
+		<BestSellerReader />
 	</div>
 </div>
