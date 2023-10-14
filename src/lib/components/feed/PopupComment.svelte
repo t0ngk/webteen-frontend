@@ -56,7 +56,7 @@
 </script>
 
 {#if isCommentOpen}
-	<div class="absolute bottom-0 bg-black rounded-[30px] w-full h-[65%]">
+	<div class="absolute bottom-0 bg-black rounded-t-[30px] w-full h-[65%]">
 		<div class="text-white text-center">
 			<h1 class="text-[20px] font-bold mt-6 text-[#F7B155] ">{title}</h1>
             <Button
