@@ -1,6 +1,6 @@
 <script>
 	// Import your Image component
-	import Image from '../category/assets/person.png';
+	import Image from '../../../assets/person.png';
 	import Icon from '@iconify/svelte';
 	import Episode from './Episode.svelte';
 	import { Button } from 'flowbite-svelte';

@@ -9,7 +9,7 @@
 		<Recommend />
 	</div>
 	<h1 class="text-xl font-medium mt-2">All Comic</h1>
-	<div>
+	<div class="w-full">
 		<BestSellerReader />
 	</div>
 </div>
