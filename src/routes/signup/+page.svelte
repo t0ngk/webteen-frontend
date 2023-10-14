@@ -3,6 +3,14 @@
 	let myBindDate = (new Date()).toJSON().slice(0, 10);
 	// $:console.log(myBindDate)
 
+    let inputType = 'text';
+    let placeholderText = 'Date';
+
+    function switchToDatePicker() {
+        inputType = 'date';
+        placeholderText = 'DD/MM/YYYY';
+    }
+
 </script>
 
 <div class="flex justify-center text-center items-center h-[95%] p-2">
@@ -37,11 +45,13 @@
         required
         />
 
-        <input class="shadow appearance-none border bg-transparent border-[#B4B4B4] rounded-3xl w-full p-3 text-[#B4B4B4] text-xs font-semibold leading-tight focus:outline-none focus:shadow-outline"
+        <input class="dark:[color-scheme:dark] shadow appearance-none border bg-transparent border-[#B4B4B4] rounded-3xl w-full p-3 text-[#B4B4B4] text-xs font-semibold leading-tight focus:outline-none focus:shadow-outline"
         type="date"
         value={myNotBindDate ? 'date' : ''}
+        placeholder={placeholderText}
         required
         />
+
         
 
         <div></div>

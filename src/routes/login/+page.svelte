@@ -26,18 +26,24 @@
             <p class="">
                 Remember me
             </p>
-            <a href="/login" class="ml-auto text-[#F7B155] hover:underline dark:text-yellow-600">Forgot password ?</a>
+            <a href="/login" class="ml-auto text-[#F7B155] hover:underline dark:text-yellow-600"
+            on:click={() => console.log("forgotpassword")}
+            >
+                Forgot password ?
+            </a>
         </div>
 
         <div></div>
         <button class=" text-black bg-[#F7B155] h-10 rounded-3xl font-bold text-sm tracking-wide disabled:bg-[#838383]"
-        disabled={!yes} on:click={() => console.log("login")}>LOGIN</button>
+        disabled={!yes} on:click={() => console.log("login")}>
+            LOGIN
+        </button>
 
     </form>
 </div>
-<div class="text-center font-medium text-sm mb-5">
-    <p class="text-white">
+<div class="text-center text-white font-medium text-sm mb-5">
+    <p>
         Don't have an account ? 
-        <a href="/signup" class="ml-auto text-[#F7B155] hover:underline dark:text-yellow-600">Sign up</a>
+        <a href="/signup" class="ml-1 text-[#F7B155] hover:underline dark:text-yellow-600">Sign up</a>
     </p>
 </div>
