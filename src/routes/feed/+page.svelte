@@ -43,7 +43,7 @@
   </script>
 
 <div class="h-full w-full p-2">
-	<div class="flex justify-center text-center my-6 font-bold">
+	<div class="flex justify-center text-center my-6 font-bold" >
 		<a href="/feed" class=" bg-[#F7B155] text-black w-24 rounded-full mx-1">
 			For You
 		</a>
@@ -88,7 +88,8 @@
 				<!-- comment -->
 				<button
 				on:click={() => { 
-					isCommentOpen = true; 
+					isCommentOpen = !isCommentOpen; 
+					console.log('isCommentOpen : ' , isCommentOpen)
 				}}>
 					<Icon icon="iconamoon:comment-light" hFlip={true} width="30px"/>
 				</button>
