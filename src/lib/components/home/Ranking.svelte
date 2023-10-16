@@ -43,7 +43,10 @@
 </script>
 
 <div class="w-full">
-	<h1 class="text-lg font-semibold mb-2">Comic Ranking</h1>
+	<div class="flex flex-row items-center mb-4">
+		<h1 class="text-lg font-semibold flex-grow">Comic Ranking</h1>
+		<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" />
+	</div>
 	{#each bookExamples as book, index}
 		<div class="flex flex-row items-center h-16">
 			<p class="font-semibold mr-5 ml-3">{index + 1}</p>

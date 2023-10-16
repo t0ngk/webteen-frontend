@@ -31,11 +31,16 @@
 			<Recommend />
 		</div>
 		<!-- comment -->
-		<h1 class="text-xl font-medium mt-4">Top comment</h1>
-		<div class="p-3 mt-4">
-			<CommentBook />
-			<CommentBook />
-			<CommentBook />
-		</div>
+		<a href="/category/detailBook/detailEP/commentEP">
+			<div class="flex flex-row items-center mt-4">
+				<h1 class="text-xl font-medium">Top comment</h1>
+				<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" class="mt-1" />
+			</div>
+			<div class="p-3 mt-4">
+				<CommentBook />
+				<CommentBook />
+				<CommentBook />
+			</div>
+		</a>
 	</div>
 </div>

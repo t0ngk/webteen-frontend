@@ -14,7 +14,7 @@
 			<Icon icon="ph:dot-bold" color="white" style="font-size: 25px" class="ml-2 -mt-5" />
 		</div>
 	</div>
-	<p class="line-clamp-2 ml-8 text-sm mt-1 pr-3">
+	<p class="line-clamp-2 ml-8 text-xs mt-1 pr-3">
 		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque mollitia cumque quibusdam
 		similique error fugit eveniet non. Ab, nihil, perspiciatis inventore quibusdam, deleniti quos
 		quaerat iusto ipsa necessitatibus eius qui!
@@ -26,5 +26,5 @@
 		<Icon icon="iconamoon:like" color="white" style="font-size: 20px" class="ml-1" />
 		<p class="text-sm ml-1">4</p>
 	</div>
-	<div class="border border-white opacity-40 my-3" />
+	<div class="border border-white opacity-20 my-3" />
 </div>

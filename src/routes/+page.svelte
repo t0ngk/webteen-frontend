@@ -10,7 +10,7 @@
 <div class="h-full w-full">
 	<!-- carousel -->
 	<Carousel />
-	<h1 class="text-lg font-semibold py-3 p-3">Recommend for you</h1>
+	<h1 class="text-lg font-semibold py-5 p-3">Recommend for you</h1>
 	<div class="w-full flex justify-center">
 		<div class="flex flex-row gap-3">
 			<Recommend />
@@ -19,7 +19,7 @@
 	<div class="w-full flex justify-center p-3">
 		<Ranking />
 	</div>
-	<h1 class="text-lg font-semibold pl-5">Best Seller</h1>
+	<h1 class="text-lg font-semibold pl-5 py-3">Best Seller</h1>
 	<div class="pl-3">
 		<BestSellerReader />
 	</div>
