@@ -89,7 +89,7 @@
 				<button
 				on:click={() => { 
 					isCommentOpen = !isCommentOpen; 
-					console.log('isCommentOpen : ' , isCommentOpen)
+					// console.log('isCommentOpen : ' , isCommentOpen)
 				}}>
 					<Icon icon="iconamoon:comment-light" hFlip={true} width="30px"/>
 				</button>

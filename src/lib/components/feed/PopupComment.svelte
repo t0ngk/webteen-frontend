@@ -19,8 +19,29 @@
             content: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
             isLike: false,
             likeCount: 10,
-            commentCount: 2,
             reportCount: 0,
+            replyCount: 2,
+            isReplyOpen: false,
+
+            replys: [
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "reply comment testing",
+                    isLike: false,
+                    likeCount: 2,
+                },
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+                    isLike: false,
+                    likeCount: 2,
+                },
+
+            ]
         },
         {
             username: "Pear",
@@ -29,8 +50,29 @@
             content: "Here are the biggest ",
             isLike: true,
             likeCount: 10,
-            commentCount: 2,
             reportCount: 0,
+            replyCount: 2,
+            isReplyOpen: false,
+
+            replys: [
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "reply comment testing",
+                    isLike: false,
+                    likeCount: 2,
+                },
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+                    isLike: false,
+                    likeCount: 2,
+                },
+
+            ]
         },
         {
             username: "User",
@@ -39,8 +81,13 @@
             content: "เลื่อนได้แล้ว !",
             isLike: false,
             likeCount: 0,
-            commentCount: 0,
-        reportCount: 0,
+            reportCount: 0,
+            replyCount: 0,
+            isReplyOpen: false,
+
+            replys: [
+
+            ]
         },
         {
             username: "to everyone",
@@ -49,8 +96,13 @@
             content: "เลื่อนลงไม่ได้จ้า",
             isLike: false,
             likeCount: 0,
-            commentCount: 0,
             reportCount: 0,
+            replyCount: 0,
+            isReplyOpen: false,
+
+            replys: [
+
+            ]
         },
         {
             username: "User",
@@ -59,8 +111,21 @@
             content: "awesome !",
             isLike: true,
             likeCount: 1,
-            commentCount: 1,
             reportCount: 0,
+            replyCount: 1,
+            isReplyOpen: false,
+
+            replys: [
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "reply comment testing",
+                    isLike: false,
+                    likeCount: 2,
+                },
+
+            ]
         },
         {
             username: "User",
@@ -69,8 +134,21 @@
             content: "เจ๋งแจ๋ว",
             isLike: true,
             likeCount: 1,
-            commentCount: 1,
             reportCount: 0,
+            replyCount: 1,
+            isReplyOpen: false,
+
+            replys: [
+                {
+                    username: "Fluk2",
+                    profileImg: "https://cdn.discordapp.com/attachments/944667694517616720/1163750978093322250/image0.jpg?ex=6540b68e&is=652e418e&hm=5a4131f574fd091673fe226c34f6f6d1fa195f1432948b68609f2b7a5570b767&",
+                    time: "1h", 
+                    content: "reply comment testing",
+                    isLike: false,
+                    likeCount: 2,
+                },
+
+            ]
         },
         
     ]
@@ -128,9 +206,14 @@
                                 {comment.likeCount}
                             </p>
                             
-                            <Icon icon="iconamoon:comment-light" hFlip={true} width="20px" />
+                            <button on:click={() => {
+                                comment.isReplyOpen = !comment.isReplyOpen;
+                            }}>
+                                <Icon icon="iconamoon:comment-light" hFlip={true} width="20px" />
+
+                            </button>
                             <p class="mx-2 mt-1 font-semibold tracking">
-                                {comment.commentCount}
+                                {comment.replyCount}
                             </p>
                         </div>
                     </div> 
@@ -151,6 +234,47 @@
 
 
                 </div>
+
+                <!-- Reply -->
+                {#if comment.isReplyOpen}
+                {#each comment.replys as reply}
+                    <div class="my-3 mt-5 mr-14 ml-20 text-white text-left text-sm leading-5">
+    
+                        <div class="text-white ">
+                            <div class="flex">
+                                <div class="mr-4 justify-center">
+                                    <img class="w-8 h-8 rounded-full object-cover"
+                                        src={reply.profileImg} alt="">
+                                </div>
+                                <p class="mt-2 mb-1 text-md font-bold tracking-tight">
+                                    {reply.username}
+                                </p>
+                                <div class="ml-2 text-xs mt-2.5 text-[#B8B8B8]">
+                                    {reply.time}
+                                </div>
+                            </div>
+                            <p class="pl-12 font-normal text-sm leading-5 text-start">
+                                {reply.content}
+                            </p>
+                            <div class="flex pl-12 text-white text-xs mt-2">
+                                
+                                <button on:click={() => { 
+                                    reply.isLike = !reply.isLike;
+                                }}>
+                                    <Icon icon={reply.isLike === true ? "mdi:heart" : "clarity:heart-line"} color={reply.isLike === true ? "#f7b155" : "white"} width="20px" />
+                                </button>
+                                <p class="mx-2 mr-3 mt-0.5 font-semibold tracking">
+                                    {reply.likeCount}
+                                </p>
+                            </div>
+                        </div> 
+
+
+                    </div>
+                {/each}
+                {/if}
+
+
             {/each}
 
             <!-- write comment -->
