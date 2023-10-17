@@ -21,7 +21,7 @@
             likeCount: 10,
             reportCount: 0,
             replyCount: 2,
-            isReplyOpen: false,
+            isReplyOpen: true,
 
             replys: [
                 {
@@ -183,6 +183,7 @@
                                 src={comment.profileImg} alt="">
                     </div>
 
+                    <!-- border -->
                     <div class="mr-2 w-11/12 text-white ">
                         <div class="flex">
                             <p class="mt-2 mb-1 text-md font-bold tracking-tight">
@@ -238,7 +239,8 @@
                 <!-- Reply -->
                 {#if comment.isReplyOpen}
                 {#each comment.replys as reply}
-                    <div class="my-3 mt-5 mr-14 ml-20 text-white text-left text-sm leading-5">
+                <div class="flex flex-row">
+                    <div class="my-3 w-11/12 mt-5 mr-2 ml-20 text-white text-left text-sm leading-5 ">
     
                         <div class="text-white ">
                             <div class="flex">
@@ -271,6 +273,11 @@
 
 
                     </div>
+                    <div class="pt-5 mr-7 items-center justify-start flex flex-col flex-grown ">
+                        <Icon icon="bi:three-dots" class="mb-5" color="#b8b8b8" rotate={1} />
+                    </div>
+
+                </div>
                 {/each}
                 {/if}
 
