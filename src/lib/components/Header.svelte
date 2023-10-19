@@ -43,7 +43,7 @@
 </script>
 
 <div>
-	<div class="sticky top-0 pt-4 bg-[#161218]">
+	<div class="sticky top-0 pt-4 bg-[#161218] z-50">
 		<div class="p-2 realtive">
 			<h1 class="text-2xl font-semibold tracking-[1px]">
 				{nav == '/writing' ? 'WRITING' : 'CATEGORY'}
