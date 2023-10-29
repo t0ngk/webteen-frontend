@@ -63,7 +63,7 @@
 
 	<div class="px-2">
 		<div class="flex justify-between items-center">
-			<p class="text-[12px] font-medium text-[#F7B155]">All Episodes (4)</p>
+			<p class="text-[12px] font-medium text-[#F7B155]">All Episodes ({episodeExamples.length})</p>
 			<Button
 				class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1"
 				on:click={() => {
@@ -105,8 +105,15 @@
 						class="flex items-center justify-between p-2 py-3 text-[8px] border-b-[1px] border-[#ffffff5d]"
 					>
 						<td class="w-[100px] flex items-center">
-							<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
-							<p class="text-[8px] font-medium ml-2">{book.name}</p>
+							<Button
+								class="p-0"
+								on:click={() => {
+									goto('/displayManga');
+								}}
+							>
+								<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
+								<p class="text-[8px] font-medium ml-2">{book.name}</p>
+							</Button>
 						</td>
 						<td class="w-5 flex justify-center">
 							<p>{book.view}K</p>

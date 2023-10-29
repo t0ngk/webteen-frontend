@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
 	import Icon from '@iconify/svelte';
 	import { Button } from 'flowbite-svelte';
 	import MultiSelect from 'svelte-multiselect';
@@ -94,4 +94,4 @@
 	.input:focus {
 		outline: none;
 	}
-</style> -->
+</style>
