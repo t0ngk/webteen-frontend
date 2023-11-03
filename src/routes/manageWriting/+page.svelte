@@ -4,8 +4,16 @@
 	import { Button } from 'flowbite-svelte';
 	import Popup from '../../lib/components/Popup.svelte';
 	import NewEpisodeContent from '$lib/components/writing/popupContent/NewEpisodeContent.svelte';
+	import { bookStore } from '../../stores/myStore';
 
 	let isPopupOpen = false;
+	let book;
+
+	bookStore.subscribe((value) => {
+		book = value;
+	});
+
+	// console.log(book);
 
 	const episodeExamples = [
 		{
@@ -55,8 +63,8 @@
 	<div class="flex flex-col items-center my-8">
 		<img class="w-[150px] h-[150px] bg-[#373739] rounded-[10px]" src="" alt="" />
 		<div class="my-4 flex flex-col items-center">
-			<h1 class="text-[20px] font-semibold">Manga Name</h1>
-			<p class="text-[12px] font-normal">Type, Penname</p>
+			<h1 class="text-[20px] font-semibold">{book.name}</h1>
+			<p class="text-[12px] font-normal">{book.type}, Penname</p>
 		</div>
 		<!-- <p class="text-[14px]">Description</p> -->
 	</div>
@@ -100,7 +108,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each episodeExamples as book}
+				{#each episodeExamples as episode}
 					<tr
 						class="flex items-center justify-between p-2 py-3 text-[8px] border-b-[1px] border-[#ffffff5d]"
 					>
@@ -108,21 +116,25 @@
 							<Button
 								class="p-0"
 								on:click={() => {
-									goto('/displayManga');
+									goto(`/displayManga?${episode.name}`);
 								}}
 							>
-								<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
-								<p class="text-[8px] font-medium ml-2">{book.name}</p>
+								<img
+									src={episode.image}
+									alt=""
+									class="rounded-[5px] w-[36px] h-[36px] object-cover"
+								/>
+								<p class="text-[8px] font-medium ml-2">{episode.name}</p>
 							</Button>
 						</td>
 						<td class="w-5 flex justify-center">
-							<p>{book.view}K</p>
+							<p>{episode.view}K</p>
 						</td>
 						<td class="w-5 flex justify-center">
-							<p>{book.like}</p>
+							<p>{episode.like}</p>
 						</td>
 						<td class="w-5 flex justify-center">
-							<p>{book.comment}</p>
+							<p>{episode.comment}</p>
 						</td>
 						<td class="w-8 flex justify-center">
 							<Button class="border-[1px] py-[2px] px-[3px] rounded-[2px]" on:click={() => {}}>
@@ -132,14 +144,14 @@
 						<td class="w-8 flex justify-center">
 							<span
 								class={`border-[1px] py-[2px] px-[6px] rounded-[2px] ${
-									book.status === 'public' || book.status === 'private'
+									episode.status === 'public' || episode.status === 'private'
 										? 'border-[#F7B155] text-[#F7B155]'
-										: book.status === 'decline'
+										: episode.status === 'decline'
 										? 'border-[#EB3333] text-[#EB3333]'
 										: ''
 								}`}
 							>
-								<p class={`uppercase text-[6px] font-semibold`}>{book.status}</p>
+								<p class={`uppercase text-[6px] font-semibold`}>{episode.status}</p>
 							</span>
 						</td>
 					</tr>

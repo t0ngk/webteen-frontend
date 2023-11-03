@@ -4,16 +4,15 @@
 	import Popup from '../Popup.svelte';
 	import AddWritingContent from './popupContent/AddWritingContent.svelte';
 	import { goto } from '$app/navigation';
-	import { writable } from 'svelte/store';
+	import { bookStore } from '../../../stores/myStore';
 
 	let isPopupOpen = false;
 
-	export let bookStore = writable();
-
-	export let isCreator = false;
+	export let isCreator = true;
 
 	const bookExamples = [
 		{
+			category: 'Manga',
 			type: 'Mystery',
 			name: 'No Name 404',
 			comment: 500,
@@ -24,6 +23,7 @@
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
 		},
 		{
+			category: 'Comic',
 			type: 'Comedy',
 			name: 'อ่านฉันสิ',
 			comment: 100,
@@ -34,6 +34,7 @@
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU'
 		},
 		{
+			category: 'Novel',
 			type: 'Action',
 			name: 'กระต่ายกับเต่า',
 			comment: 50,
@@ -45,7 +46,7 @@
 	];
 </script>
 
-{#if isCreator}	
+{#if isCreator}
 	<div class="container p-2 relative">
 		<div class="flex justify-center">
 			<h1 class="text-[20px] font-semibold mt-[40px] mb-[20px]">Manage Writing</h1>
@@ -100,11 +101,15 @@
 								<Button
 									class="p-0"
 									on:click={() => {
-										bookStore.set(book.name);
-										goto('/manageWriting');
+										bookStore.set(book);
+										goto(`/manageWriting?${book.name}`);
 									}}
 								>
-									<img src={book.image} alt="" class="rounded-[5px] w-[36px] h-[36px] object-cover" />
+									<img
+										src={book.image}
+										alt=""
+										class="rounded-[5px] w-[36px] h-[36px] object-cover"
+									/>
 									<p class="text-[8px] font-medium ml-2">{book.name}</p>
 								</Button>
 							</td>
@@ -150,13 +155,13 @@
 	</div>
 {:else}
 	<div class="w-full flex flex-col items-center gap-2 mt-16">
-		<h1 class="text-xl">
-			You are not a creator
-		</h1>
+		<h1 class="text-xl">You are not a creator</h1>
 		<div class="aspect-square w-[60%]">
-			<img class="w-full h-full" src="/creator.png" alt="" srcset="">
+			<img class="w-full h-full" src="/creator.png" alt="" srcset="" />
 		</div>
-		<button class="w-[60%] transition px-2 py-1 bg-[#F7B155] text-[#161218] hover:bg-[#e8a64f] active:bg-[#d29547] rounded">
+		<button
+			class="w-[60%] transition px-2 py-1 bg-[#F7B155] text-[#161218] hover:bg-[#e8a64f] active:bg-[#d29547] rounded"
+		>
 			Upgrade to Creator
 		</button>
 	</div>
