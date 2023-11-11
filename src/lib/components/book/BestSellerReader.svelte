@@ -1,65 +1,21 @@
 <script>
 	import Icon from '@iconify/svelte';
-
-	const bookExamples = [
-		{
-			type: 'Mystery',
-			name: 'No Name 404',
-			earn: 1200,
-			date: '12/03/2016',
-			chapter: 105,
-			view: 1234,
-			like: 20000,
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
-		},
-		{
-			type: 'Comedy',
-			name: 'อ่านฉันสิ',
-			earn: 999,
-			date: '10/09/2023',
-			chapter: 40,
-			view: 5000,
-			like: 1900,
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU'
-		},
-		{
-			type: 'Action',
-			name: 'กระต่ายกับเต่า',
-			earn: 41,
-			date: '09/12/2020',
-			chapter: 9,
-			view: 300,
-			like: 567,
-			image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg'
-		},
-		{
-			type: 'Action',
-			name: 'กระต่ายกับเต่า',
-			earn: 41,
-			date: '09/12/2020',
-			chapter: 9,
-			view: 300,
-			like: 567,
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
-		}
-	];
+	export let RecommendBooks;
+	
 </script>
 
-{#each bookExamples as book}
+{#each RecommendBooks as book}
 	<a href="/category/detailBook">
 		<div class="flex flex-row p-2 py-3 bg-transparent h-28 mb-3">
 			<div class="flex flex-wrap justify-center max-h-2">
-				<img src={book.image} alt="" class="rounded-[10%] w-28 h-28 object-cover" />
+				<img src={book.cover} alt="" class="rounded-[10%] w-28 h-28 object-cover" />
 			</div>
 			<div class=" pl-5 flex flex-col justify-center w-auto h-28">
 				<p class=" text-[#818181]" style="font-size: 12px;">
 					{book.type}
 				</p>
 				<div class="w-56">
-					<div class="text-white text-sm font-semibold">{book.name}</div>
+					<div class="text-white text-sm font-semibold">{book.title}</div>
 					<p class="text-white line-clamp-2 mt-1" style="font-size: 12px;">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptate neque
 						quae, dolorum corrupti ex voluptas deserunt est tempora, temporibus id? Repellendus

@@ -35,7 +35,9 @@
 	"type": "module",
 	"dependencies": {
 		"apexcharts": "^3.44.0",
+		"axios": "^1.6.1",
 		"chart.js": "^4.4.0",
+		"cors": "^2.8.5",
 		"svelte-apexcharts": "^1.0.2",
 		"svelte-dnd-action": "^0.9.31",
 		"svelte-multiselect": "^10.2.0"

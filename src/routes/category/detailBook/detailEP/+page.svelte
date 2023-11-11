@@ -11,7 +11,7 @@
 		<Icon icon="uiw:menu" color="white" style="font-size: 25px" />
 	</div>
 	<div class="w-full h-5/6 bg-gray-300">content</div>
-	<!-- bar under content -->
+	<!-- bar under contents -->
 	<div class="w-full h-10 bg-gray-700 flex items-center pl-3">
 		<div class="flex flex-row flex-grow">
 			<Icon icon="ph:heart-bold" color="white" style="font-size: 20px" />
