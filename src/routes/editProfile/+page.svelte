@@ -14,7 +14,11 @@
 	const findUser = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8082/user-service/getUsers/b862595f-3ff3-420e-9ec6-fc65d7547059') // change id here naa
+            const res = await axios.get('http://localhost:8082/user-service/getUsers/b862595f-3ff3-420e-9ec6-fc65d7547059', {
+										headers: {
+												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+										}
+						}) // change id here naa
 			userData = res.data
 			usernameInput = userData.username;
 			emailInput = userData.email;
@@ -38,7 +42,11 @@
 		};
 		console.log("dataToUpdate: ", dataToUpdate)
         try {
-            const res = await axios.put('http://localhost:8082/user-service/users', dataToUpdate)
+            const res = await axios.put('http://localhost:8082/user-service/users', dataToUpdate, {
+										headers: {
+												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+										}
+						})
             console.log('Find User Frontend Successfully');
             console.log('Response:', res.data);
         } catch (error) {

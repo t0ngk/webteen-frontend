@@ -56,6 +56,10 @@
 				category: category,
 				type: type,
 				cover: cover
+			}, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+				}
 			});
 			// console.log(res);
 		} catch (error) {

@@ -33,7 +33,11 @@
 	const findUser = async () => {
 
         try {
-            const res = await axios.get('http://localhost:8082/user-service/getUsers/b862595f-3ff3-420e-9ec6-fc65d7547059') // ใส่ id ตรงนี้
+            const res = await axios.get('http://localhost:8082/user-service/getUsers/b862595f-3ff3-420e-9ec6-fc65d7547059', {
+										headers: {
+												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+										}
+						}) // ใส่ id ตรงนี้
 			userData = res.data
             console.log('Find User Successfully: ', userData);
         } catch (error) {

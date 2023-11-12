@@ -14,7 +14,11 @@
 	const getDetailChapter = async () => {
 		try {
 			console.log('chapterId', chapterId);
-			const res = await axios.get(`http://localhost:8082/book-service/getChapterById/${chapterId}`);
+			const res = await axios.get(`http://localhost:8082/book-service/getChapterById/${chapterId}`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+				}
+			});
 			chapter = res.data;
 			isDataLoaded = true; // Set the flag to true once data is loaded
 			console.log(chapter);
@@ -28,7 +32,11 @@
 	const getComment = async () => {
 		try {
 			console.log('chapterId', chapterId);
-			const res = await axios.get(`http://localhost:8082/comment-service/getComment`);
+			const res = await axios.get(`http://localhost:8082/comment-service/getComment`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+				}
+			});
 			comments = res.data;
 			isDataLoaded1 = true; // Set the flag to true once data is loaded
 			console.log(comments);

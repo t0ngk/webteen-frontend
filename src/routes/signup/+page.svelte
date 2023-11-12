@@ -8,6 +8,7 @@
     const addUser = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Bearer " + localStorage.getItem('accessToken'));
 
         var raw = JSON.stringify({
             "email": emailInput,
