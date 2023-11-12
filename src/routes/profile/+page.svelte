@@ -9,6 +9,26 @@
 	import { onMount } from 'svelte';
 
 	let userData = {}
+	let total = 0;
+	onMount(async () => {
+		const req = await fetch('http://localhost:8082/statement-service/statement', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+			}
+		});
+		if (req.ok) {
+			const stan = await req.json();
+			total = stan.reduce((acc, cur) => {
+				if (cur.type == 'COIN') {
+					return acc + cur.amount;
+				} else {
+					return acc - cur.amount;
+				}
+			}, 0);
+		}
+	})
 
 	const findUser = async () => {
 
@@ -46,7 +66,7 @@
 		}}
 		>
 			<Icon icon="circum:bitcoin" color="#f7b155" class="h-[30px] w-[30px]" />
-			<h3 class="pl-1"><b>9999</b></h3>
+			<h3 class="pl-1"><b>{total}</b></h3>
 		</Button>
 		
 	</div>
