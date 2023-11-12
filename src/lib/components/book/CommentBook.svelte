@@ -2,6 +2,20 @@
 	import Icon from '@iconify/svelte';
 	import { AccordionItem, Accordion } from 'flowbite-svelte';
 	export let comment;
+
+	const addReportComment = async () => {
+		console.log('commentId ', comment.commentId)
+
+		fetch(
+			`http://localhost:8082/report-service/addReport/comment/${comment.commentId}`,
+			{method: 'POST',
+			body: '',
+			redirect: 'follow'}
+		)
+			.then((response) => response.text())
+			.then((result) => console.log(result))
+			.catch((error) => console.log('error', error));
+	};
 </script>
 
 <div class="w-full h-32 mb-4">
@@ -11,11 +25,17 @@
 			<h1 class="text-sm font-semibold ml-2 text-white">{comment.userId}</h1>
 			<Icon icon="la:award" color="#F7B155" style="font-size: 25px" class="ml-2" />
 			<p class="text-sm text-gray-400 ml-1 flex-grow">3 Feb 2023</p>
-			<div class="items-center mt-4">
+			<!-- ปุ่ม -->
+			<button
+				class="bg-[#C13E3E] text-white px-2 py-[1.5px] rounded-full"
+				on:click={addReportComment}
+				>Report
+			</button>
+			<!-- <div class="items-center mt-4" on:click={addReportComment}>
 				<Icon icon="ph:dot-bold" color="white" style="font-size: 25px" class="ml-2 -mt-5" />
 				<Icon icon="ph:dot-bold" color="white" style="font-size: 25px" class="ml-2 -mt-5" />
 				<Icon icon="ph:dot-bold" color="white" style="font-size: 25px" class="ml-2 -mt-5" />
-			</div>
+			</div> -->
 		</div>
 		<p class="line-clamp-2 ml-8 text-xs mt-1 pr-3 text-white">
 			{comment.commentDetail}

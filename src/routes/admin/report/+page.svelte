@@ -4,7 +4,7 @@
 </script>
 
 <div class="h-full w-full p-2">
-	<Search/>
+	<Search />
 	<h1 class="text-2xl font-bold text-center mt-5 mb-5">Report</h1>
-	<Report/>
+	<Report />
 </div>
