@@ -1,55 +1,80 @@
 <script>
-    import Icon from '@iconify/svelte';
+	import Icon from '@iconify/svelte';
+	import { onMount } from 'svelte';
+	import axios from 'axios';
 
-    const bookExamples = [
-		{
-			name: 'No Name 404',
-            author: 'A',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU',
-		},
-		{
-			name: 'อ่านฉันสิ',
-            author: 'B',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU',
-		},
-		{
-			name: 'กระต่ายกับเต่า',
-            author: 'C',
-            image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg',
-		},
-		{
-			name: 'กระต่ายกับเต่า',
-            author: 'C',
-            image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg',
-		},
-		{
-			name: 'กระต่ายกับเต่า2',
-            author: 'C',
-            image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg',
-		},
-		{
-			name: 'กระต่ายกับเต่า3',
-            author: 'C',
-            image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg',
-		},
-	];
+	let FavoriteBooks = [];
+	let Books = [];
+	let isDataLoad = false;
+	let isDataLoaded = false;
+
+	const getFavorite = async () => {
+		try {
+			const res = await axios.get('http://localhost:8082/favorite-service/getFavorite');
+			FavoriteBooks = res.data;
+			isDataLoaded = true; // Set the flag to true once data is loaded
+			console.log(FavoriteBooks);
+
+			// เมื่อดึงข้อมูลจาก 'favorite-service' เสร็จสิ้น, ทำการดึงข้อมูล Books
+			await getBooksFromFavorite();
+		} catch (error) {
+			console.error('Error fetching favorite:', error);
+		}
+	};
+
+	const getBooksFromFavorite = async () => {
+		try {
+			// สร้าง Promise สำหรับทุกการดึงข้อมูล Books
+			const bookPromises = FavoriteBooks.map(async (favorite) => {
+				const bookId = favorite.bookId;
+				const bookRes = await axios.get(`http://localhost:8082/favorite-service/getBook/${bookId}`);
+				return bookRes.data;
+			});
+
+			// รอให้ทุก Promise เสร็จสิ้น
+			const booksData = await Promise.all(bookPromises);
+
+			// นำข้อมูล Books ทั้งหมดมาเก็บในตัวแปร Books
+			Books = booksData;
+			isDataLoad = true; // Set the flag to true once data is loaded
+			console.log(Books);
+		} catch (error) {
+			console.error('Error fetching Books:', error);
+		}
+	};
+
+    const deleteFavorite = async (bookId) => {
+        const bookID = bookId
+        console.log(`favId >>>>>> ${bookID}`);
+		try {
+			const deleteRes = await axios.get(`http://localhost:8082/favorite-service/deleteFavorite/${bookID}`);
+			console.log(`Favorite with ID ${bookId} deleted`);
+		} catch (error) {
+			console.error('Error deleting favorite:', error);
+		}
+	};
+
+
+	onMount(getFavorite);
+
+	
 </script>
 
 <div class="mt-5">
-    {#each bookExamples as book}
-        <div>
-            <div class="bg-[#161218] flex border-b-[0.5px] border-gray-400 h-[85px]">
-                <div class="w-[100px] bg-[#D9D9D9]"></div>
-                <div class="flex justify-between items-center w-full pr-1">
-                    <div class="items-center pl-5 justify-start">
-                        <p class="text-base"><b>{book.name}</b></p>
-                        <p class="text-base">Author</p>
-                    </div>
-                    <div class="justify-end">
-                        <Icon icon="ph:heart-fill" color="#F7B155" class="w-[25px] h-[25px]" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    {/each}
+	{#each Books as book}
+		<div>
+			<div class="bg-[#161218] flex border-b-[0.5px] border-gray-400 h-[85px]">
+                <img src={book.cover} alt={book.title} class="w-[85px] h-[85px] object-cover" />
+				<div class="flex justify-between items-center w-full pr-1">
+					<div class="items-center pl-5 justify-start">
+						<p class="text-base"><b>{book.title}</b></p>
+						<p class="text-base">{book.like}</p>
+					</div>
+					<button class="justify-end" on:click={deleteFavorite(book.bookId)}>
+						<Icon icon="ph:heart-fill" color="#F7B155" class="w-[25px] h-[25px]" />
+					<button/>
+				</div>
+			</div>
+		</div>
+	{/each}
 </div>
