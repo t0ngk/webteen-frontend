@@ -1,4 +1,5 @@
 <script>
+   import axios from 'axios';
     const cvwriten = [
       {
         image: 'https://resizing.flixster.com/MKm9U3QTNzsng_PbR0PC1nTYcSA=/206x305/v2/https://flxt.tmsimg.com/assets/p15630144_e_v8_aa.jpg', // เพิ่ม path ของรูปภาพที่นี้
@@ -14,6 +15,17 @@
       }
       
     ];
+
+    const addApprovewriter = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:8082/approve-service/approve/writer/b862595f-3ff3-420e-9ec6-fc65d7547059/true'
+            );
+            console.log('Response from backend:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
   </script>
 
 {#each cvwriten as item (item.username)}
@@ -59,7 +71,7 @@
       <div class="border-b border-gray-500 w-full mb-2"></div>
     </div>
     <div class="flex space-x-6 mt-10">
-        <button class="flex-1 bg-[#38920D] text-white px-4 py-2 rounded-full">Approve</button>
+        <button on:click={addApprovewriter} class="flex-1 bg-[#38920D] text-white px-4 py-2 rounded-full">Approve</button>
         <button class="flex-1 bg-[#C13E3E] text-white px-4 py-2 rounded-full">Decline</button>
       </div>
       

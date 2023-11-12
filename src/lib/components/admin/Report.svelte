@@ -1,4 +1,5 @@
 <script>
+	import axios from 'axios';
 	const reportdata = [
 		{
 			image:
@@ -27,6 +28,17 @@
 		}
         
 	];
+
+	const addApprovereport = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:8082/approve-service/approve/report/a202ac35-63e7-47b6-8be1-2a9dd457e201/true'
+            );
+            console.log('Response from backend:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 </script>
 
 {#each reportdata as item (item.username)}
@@ -38,7 +50,7 @@
 			<div class="flex items-center justify-between">
 				<p class="font-bold text-xl mb-5">{item.username}</p>
 				<div class="flex space-x-2 mt-[-20px]">
-					<button class="bg-[#C13E3E] text-white px-2 py-[1.5px] rounded-full">Delete</button>
+					<button on:click={addApprovereport} class="bg-[#C13E3E] text-white px-2 py-[1.5px] rounded-full">Delete</button>
 					<button class="bg-[#929292] text-white px-2 py-[1.5px] rounded-full">Decline</button>
 				</div>
 			</div>
