@@ -10,7 +10,7 @@
 	bookStore.subscribe((value) => {
 		book = value;
 	});
-	// console.log(book.category);
+	// console.log(book);
 </script>
 
 <div class="container mt-5 relative">

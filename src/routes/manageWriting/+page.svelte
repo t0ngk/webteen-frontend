@@ -13,7 +13,7 @@
 		book = value;
 	});
 
-	console.log(book._id);
+	// console.log(book._id);
 
 	import { onMount } from 'svelte';
 	import axios from 'axios';
@@ -30,41 +30,12 @@
 			});
 			chapters = res.data;
 			isDataLoaded = true;
-			console.log(chapters);
+			// console.log(chapters[0]);
 		} catch (error) {
 			console.error('Error fetching books:', error);
 		}
 	};
 	onMount(getChapters);
-
-	const episodeExamples = [
-		{
-			name: 'EP1',
-			comment: 500,
-			view: 1234,
-			like: 2000,
-			status: 'public',
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
-		},
-		{
-			name: 'EP2',
-			comment: 100,
-			view: 5000,
-			like: 1900,
-			status: 'decline',
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU'
-		},
-		{
-			name: 'EP3',
-			comment: 50,
-			view: 300,
-			like: 567,
-			status: 'waiting',
-			image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg'
-		}
-	];
 </script>
 
 <div class="container p-2 mt-5 relative">

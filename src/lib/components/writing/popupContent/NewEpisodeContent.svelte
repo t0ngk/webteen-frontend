@@ -2,7 +2,17 @@
 	import Icon from '@iconify/svelte';
 	import { Button } from 'flowbite-svelte';
 	import MultiSelect from 'svelte-multiselect';
+	import { bookStore } from '../../../../stores/myStore';
+	import axios from 'axios';
 
+	let book;
+	bookStore.subscribe((value) => {
+		book = value;
+	});
+	// console.log(book._id);
+
+	let number = '';
+	let title = '';
 	let cover = '';
 	let fileinput;
 
@@ -20,6 +30,35 @@
 
 	const categories = ['Manga', 'Comic', 'Novel'];
 	let active = categories[0];
+
+	const handleTitleInput = (event) => {
+		title = event.target.value;
+		// console.log(title);
+	};
+
+	const handleNumberInput = (event) => {
+		number = event.target.value;
+		// console.log(number);
+	};
+
+	const createChapter = async () => {
+		const formData = new FormData();
+		formData.append('number', number);
+		formData.append('title', title);
+		formData.append('cover', cover);
+		formData.append('bookId', book._id);
+
+		try {
+			const res = await axios.post('http://localhost:8082/book-service/createChapter', formData, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+					'Content-Type': 'multipart/form-data'
+				}
+			});
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
 </script>
 
 <div class="flex flex-col">
@@ -63,15 +102,29 @@
 	<div class="flex flex-col gap-4 mt-5">
 		<div class="border-[1px] rounded-[5px] border-black w-full h-auto py-1 px-3 relative">
 			<p class="title">Episode</p>
-			<input class="input text-[14px]" type="text" id="title" name="title" />
+			<input
+				class="input text-[14px]"
+				type="text"
+				id="number"
+				name="number"
+				bind:value={number}
+				on:input={handleNumberInput}
+			/>
 		</div>
 
 		<div class="border-[1px] rounded-[5px] border-black w-full h-auto py-1 px-3 relative">
 			<p class="title">Name</p>
-			<input class="input text-[14px]" type="text" id="title" name="title" />
+			<input
+				class="input text-[14px]"
+				type="text"
+				id="title"
+				name="title"
+				bind:value={title}
+				on:input={handleTitleInput}
+			/>
 		</div>
 
-		<Button class="bg-[#373739] py-2 text-[12px] font-medium" on:click={() => {}}
+		<Button class="bg-[#373739] py-2 text-[12px] font-medium" on:click={createChapter}
 			>Add Episode</Button
 		>
 	</div>

@@ -48,20 +48,21 @@
 	};
 
 	const createBook = async () => {
-		console.log(cover);
+		const formData = new FormData();
+		formData.append('cover', cover);
+		formData.append('title', title);
+		formData.append('description', description);
+		formData.append('category', category);
+		formData.append('type', type);
+		// console.log(formData);
+
 		try {
-			const res = await axios.post(`http://localhost:8082/book-service/createBook`, {
-				title: title,
-				description: description,
-				category: category,
-				type: type,
-				cover: cover
-			}, {
+			const res = await axios.post(`http://localhost:8082/book-service/createBook`, formData, {
 				headers: {
-					Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+					Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+					'Content-Type': 'multipart/form-data'
 				}
 			});
-			// console.log(res);
 		} catch (error) {
 			console.error('Error fetching books:', error);
 		}

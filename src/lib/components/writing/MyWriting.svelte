@@ -85,7 +85,7 @@
 									class="p-0"
 									on:click={() => {
 										bookStore.set(book);
-										goto(`/manageWriting?${book._id}`);
+										goto(`/manageWriting`);
 									}}
 								>
 									<img
