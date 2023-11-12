@@ -6,44 +6,27 @@
 	import { goto } from '$app/navigation';
 	import { bookStore } from '../../../stores/myStore';
 
-	let isPopupOpen = false;
+	import { onMount } from 'svelte';
+	import axios from 'axios';
 
-	export let isCreator = true;
+	let books = [];
+	let isDataLoaded = false;
 
-	const bookExamples = [
-		{
-			category: 'Manga',
-			type: 'Mystery',
-			name: 'No Name 404',
-			comment: 500,
-			view: 1234,
-			like: 2000,
-			status: 'public',
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN-TGUnYCYmr-IVYQjN9DgneizSMZJUob733p-6Vw3ByB9QuSTaLYOSLkvRz9VSw75vQ&usqp=CAU'
-		},
-		{
-			category: 'Comic',
-			type: 'Comedy',
-			name: 'อ่านฉันสิ',
-			comment: 100,
-			view: 5000,
-			like: 1900,
-			status: 'decline',
-			image:
-				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7BZnI7PbKGdUHaL0GkSyNdj530Gvhde3ZdLwxXPF6gWUSefNsxbTl8PElwmNcELou8s&usqp=CAU'
-		},
-		{
-			category: 'Novel',
-			type: 'Action',
-			name: 'กระต่ายกับเต่า',
-			comment: 50,
-			view: 300,
-			like: 567,
-			status: 'waiting',
-			image: 'https://i.pinimg.com/originals/fc/7c/8b/fc7c8bd8f242e2765dfd99b619002712.jpg'
+	let userId = 'b862595f-3ff3-420e-9ec6-fc65d7547059';
+	const getBooks = async () => {
+		try {
+			const res = await axios.get(`http://localhost:8082/book-service/getBookByUserId/${userId}`);
+			books = res.data;
+			isDataLoaded = true;
+			console.log(books);
+		} catch (error) {
+			console.error('Error fetching books:', error);
 		}
-	];
+	};
+	onMount(getBooks);
+
+	let isPopupOpen = false;
+	export let isCreator = true;
 </script>
 
 {#if isCreator}
@@ -93,7 +76,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each bookExamples as book}
+					{#each books as book}
 						<tr
 							class="flex items-center justify-between p-2 py-3 text-[8px] border-b-[1px] border-[#ffffff5d]"
 						>
@@ -102,15 +85,15 @@
 									class="p-0"
 									on:click={() => {
 										bookStore.set(book);
-										goto(`/manageWriting?${book.name}`);
+										goto(`/manageWriting?${book._id}`);
 									}}
 								>
 									<img
-										src={book.image}
+										src={book.cover}
 										alt=""
 										class="rounded-[5px] w-[36px] h-[36px] object-cover"
 									/>
-									<p class="text-[8px] font-medium ml-2">{book.name}</p>
+									<p class="text-[8px] font-medium ml-2">{book.title}</p>
 								</Button>
 							</td>
 							<td class="w-10 flex justify-center">

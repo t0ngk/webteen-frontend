@@ -2,9 +2,24 @@
 	import Icon from '@iconify/svelte';
 	import { Button } from 'flowbite-svelte';
 	import MultiSelect from 'svelte-multiselect';
+	import { onMount } from 'svelte';
+	import axios from 'axios';
 
+	let title = '';
+	let description = '';
+	let category = '';
+	let type = '';
 	let cover = '';
 	let fileinput;
+
+	const createBook = async () => {
+		try {
+			const res = await axios.post(`http://localhost:8082/book-service/createBook`);
+			console.log(res);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
 
 	function fileSelect() {
 		let image = fileinput.files[0];
@@ -20,6 +35,26 @@
 
 	const categories = ['Manga', 'Comic', 'Novel'];
 	let active = categories[0];
+
+	const handleCategoryClick = (item) => {
+		category = item;
+		console.log(category);
+	};
+
+	const handleTitleInput = (event) => {
+		title = event.target.value;
+		console.log(title);
+	};
+
+	const handleDescriptionInput = (event) => {
+		description = event.target.value;
+		console.log(description);
+	};
+
+	const handleSelectedTypes = (event) => {
+		type = event.detail.value;
+		console.log('Selected Types: ', type);
+	};
 </script>
 
 <div class="flex flex-col">
@@ -63,12 +98,25 @@
 	<div class="flex flex-col gap-4 mt-5">
 		<div class="border-[1px] rounded-[5px] border-black w-full h-auto py-1 px-3 relative">
 			<p class="title">Title</p>
-			<input class="input text-[14px]" type="text" id="title" name="title" />
+			<input
+				bind:value={title}
+				on:input={handleTitleInput}
+				class="input text-[14px]"
+				type="text"
+				id="title"
+				name="title"
+			/>
 		</div>
 
 		<div class="border-[1px] rounded-[5px] border-black w-full h-auto py-1 px-3 relative">
 			<p class="title">Description</p>
-			<textarea class="input text-[12px]" id="des" name="des" />
+			<textarea
+				bind:value={description}
+				on:input={handleDescriptionInput}
+				class="input text-[12px]"
+				id="des"
+				name="des"
+			/>
 		</div>
 
 		<div class="border-[1px] rounded-[8px] border-black w-full h-auto pt-3 pb-2 px-3 relative">
@@ -81,6 +129,7 @@
 						}`}
 						on:click={() => {
 							active = item;
+							handleCategoryClick(item);
 						}}>{item}</Button
 					>
 				{/each}
@@ -97,6 +146,9 @@
 				--sms-selected-bg="#373739"
 				--sms-selected-text-color="white"
 				--sms-font-size="12px"
+				on:selectedChange={() => {
+					console.log("")
+				}}
 			/>
 		</div>
 

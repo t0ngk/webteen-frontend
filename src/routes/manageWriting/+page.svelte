@@ -13,7 +13,25 @@
 		book = value;
 	});
 
-	// console.log(book);
+	console.log(book._id);
+
+	import { onMount } from 'svelte';
+	import axios from 'axios';
+
+	let chapters = [];
+	let isDataLoaded = false;
+
+	const getChapters = async () => {
+		try {
+			const res = await axios.get(`http://localhost:8082/book-service/getChapterByBookId/${book._id}`);
+			chapters = res.data;
+			isDataLoaded = true;
+			console.log(chapters);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
+	onMount(getChapters);
 
 	const episodeExamples = [
 		{
@@ -61,17 +79,17 @@
 	</div>
 
 	<div class="flex flex-col items-center my-8">
-		<img class="w-[150px] h-[150px] bg-[#373739] rounded-[10px]" src="" alt="" />
+		<img class="w-[150px] h-[150px] bg-[#373739] rounded-[10px]" src={book.cover} alt="" />
 		<div class="my-4 flex flex-col items-center">
-			<h1 class="text-[20px] font-semibold">{book.name}</h1>
-			<p class="text-[12px] font-normal">{book.type}, Penname</p>
+			<h1 class="text-[20px] font-semibold">{book.title}</h1>
+			<p class="text-[12px] font-normal">{book.category}, {book.type}</p>
 		</div>
 		<!-- <p class="text-[14px]">Description</p> -->
 	</div>
 
 	<div class="px-2">
 		<div class="flex justify-between items-center">
-			<p class="text-[12px] font-medium text-[#F7B155]">All Episodes ({episodeExamples.length})</p>
+			<p class="text-[12px] font-medium text-[#F7B155]">All Episodes ({chapters.length})</p>
 			<Button
 				class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1"
 				on:click={() => {
@@ -108,7 +126,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each episodeExamples as episode}
+				{#each chapters as episode}
 					<tr
 						class="flex items-center justify-between p-2 py-3 text-[8px] border-b-[1px] border-[#ffffff5d]"
 					>
@@ -116,15 +134,15 @@
 							<Button
 								class="p-0"
 								on:click={() => {
-									goto(`/displayManga?${episode.name}`);
+									goto(`/displayManga?${episode.title}`);
 								}}
 							>
 								<img
-									src={episode.image}
+									src={episode.cover}
 									alt=""
 									class="rounded-[5px] w-[36px] h-[36px] object-cover"
 								/>
-								<p class="text-[8px] font-medium ml-2">{episode.name}</p>
+								<p class="text-[8px] font-medium ml-2">{episode.number} {episode.title}</p>
 							</Button>
 						</td>
 						<td class="w-5 flex justify-center">
