@@ -6,12 +6,12 @@
 	import { Button } from 'flowbite-svelte';
 	export let RecommendBooks;
 
-	console.log('recommend', RecommendBooks);
+	// console.log('recommend', RecommendBooks);
 </script>
 
 {#each RecommendBooks as book}
 	<div class="h-48 w-1/3">
-		<a href="/category/detailBook">
+		<a href="/category/detailBook/{book.bookId}">
 			<div class="h-28 w-28 bg-gray-200 rounded-lg">
 				<img src={book.cover} alt="" class="rounded-lg w-28 h-28 object-cover" />
 			</div>

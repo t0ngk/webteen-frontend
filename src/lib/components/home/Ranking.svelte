@@ -42,7 +42,7 @@
 	];
 </script>
 
-<div class="w-full">
+<div class="min-w-full bg-red-300">
 	<div class="flex flex-row items-center mb-4">
 		<h1 class="text-lg font-semibold flex-grow">Comic Ranking</h1>
 		<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" />

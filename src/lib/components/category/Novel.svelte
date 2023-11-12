@@ -9,7 +9,7 @@
 
 	const getBooks = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/book-service/getRecommendBook/Novel`);
+			const res = await axios.get(`http://localhost:8082/ranking-service/getRecommendBook/Novel`);
 			RecommendBooks = res.data;
 			isDataLoaded = true; // Set the flag to true once data is loaded
 			console.log(RecommendBooks);

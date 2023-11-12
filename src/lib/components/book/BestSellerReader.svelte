@@ -1,11 +1,10 @@
 <script>
 	import Icon from '@iconify/svelte';
 	export let RecommendBooks;
-	
 </script>
 
 {#each RecommendBooks as book}
-	<a href="/category/detailBook">
+	<a href="/category/detailBook/{book.bookId}">
 		<div class="flex flex-row p-2 py-3 bg-transparent h-28 mb-3">
 			<div class="flex flex-wrap justify-center max-h-2">
 				<img src={book.cover} alt="" class="rounded-[10%] w-28 h-28 object-cover" />

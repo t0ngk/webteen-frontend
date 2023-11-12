@@ -27,7 +27,7 @@
 	<div class="pl-3">
 		<h1 class="text-xl font-medium mt-4">Recommend</h1>
 		<div class="flex flex-row gap-1 mt-3">
-			<Recommend />
+			<!-- <Recommend /> -->
 		</div>
 		<!-- comment -->
 		<a href="/category/detailBook/detailEP/commentEP">

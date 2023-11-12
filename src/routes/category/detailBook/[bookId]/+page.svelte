@@ -2,6 +2,26 @@
 	/** @type {import('./$types').PageData} */
 	import Episode from '$lib/components/book/Episode.svelte';
 	import Icon from '@iconify/svelte';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import axios from 'axios';
+
+	const bookId = $page.params.bookId;
+	let Book = {};
+	let isDataLoaded = false;
+
+	const getDetailBooks = async () => {
+		try {
+			const res = await axios.get(`http://localhost:8082/book-service/getBook/${bookId}`);
+			Book = res.data;
+			isDataLoaded = true; // Set the flag to true once data is loaded
+			console.log(Book);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
+
+	onMount(getDetailBooks);
 </script>
 
 <div class="h-full w-full">
@@ -13,22 +33,21 @@
 			</div>
 
 			<div class="pl-3 w-5/6">
-				<p class="text-sm text-gray-200 mt-7">Type</p>
-				<p class="text-xl font-medium">Comic Name</p>
+				<p class="text-sm text-gray-200 mt-7">{Book.type}</p>
+				<p class="text-xl font-medium">{Book.title}</p>
 				<p class="line-clamp-4 text-sm">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam aut culpa, doloremque
-					ducimus dolore distinctio temporibus enim rerum repellendus a quas! Recusandae cupiditate
-					fugiat omnis laboriosam eum labore nulla optio?
+					{Book.description}
 				</p>
 			</div>
 		</div>
 		<img
-			src="https://cdn.discordapp.com/attachments/895533055928852502/1162025735574278255/14517729691676530064.png?ex=653a6fcc&is=6527facc&hm=2081917ce025af5a2012a82945311342e79ae89eceea5ad6eb50ef3fd4277fef&"
+			src={Book.cover}
 			alt=""
 			class="w-full h-72 object-cover"
 		/>
 	</div>
 	<!-- <div class="divide-y divide-white"> -->
+	<p>bookID----{bookId}</p>
 	<Episode />
 	<Episode />
 	<Episode />
