@@ -55,6 +55,21 @@
 			date: '6 June 2024'
 		}
 	];
+
+	const addApprovereport = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:8082/approve-service/approve/report/a202ac35-63e7-47b6-8be1-2a9dd457e201/true', null, {
+										headers: {
+												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+										}
+								}
+            );
+            console.log('Response from backend:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 </script>
 
 <!-- {#each ReportComment as comment}
