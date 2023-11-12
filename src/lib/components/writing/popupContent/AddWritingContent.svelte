@@ -12,15 +12,6 @@
 	let cover = '';
 	let fileinput;
 
-	const createBook = async () => {
-		try {
-			const res = await axios.post(`http://localhost:8082/book-service/createBook`);
-			console.log(res);
-		} catch (error) {
-			console.error('Error fetching books:', error);
-		}
-	};
-
 	function fileSelect() {
 		let image = fileinput.files[0];
 		let reader = new FileReader();
@@ -38,22 +29,38 @@
 
 	const handleCategoryClick = (item) => {
 		category = item;
-		console.log(category);
+		// console.log(category);
 	};
 
 	const handleTitleInput = (event) => {
 		title = event.target.value;
-		console.log(title);
+		// console.log(title);
 	};
 
 	const handleDescriptionInput = (event) => {
 		description = event.target.value;
-		console.log(description);
+		// console.log(description);
 	};
 
 	const handleSelectedTypes = (event) => {
 		type = event.detail.value;
 		console.log('Selected Types: ', type);
+	};
+
+	const createBook = async () => {
+		console.log(cover);
+		try {
+			const res = await axios.post(`http://localhost:8082/book-service/createBook`, {
+				title: title,
+				description: description,
+				category: category,
+				type: type,
+				cover: cover
+			});
+			// console.log(res);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
 	};
 </script>
 
@@ -146,13 +153,11 @@
 				--sms-selected-bg="#373739"
 				--sms-selected-text-color="white"
 				--sms-font-size="12px"
-				on:selectedChange={() => {
-					console.log("")
-				}}
+				on:selectedChange={handleSelectedTypes}
 			/>
 		</div>
 
-		<Button class="bg-[#373739] py-2 text-[12px] font-medium" on:click={() => {}}
+		<Button class="bg-[#373739] py-2 text-[12px] font-medium" on:click={createBook}
 			>Add Writing</Button
 		>
 	</div>

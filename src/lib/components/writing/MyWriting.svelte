@@ -34,12 +34,8 @@
 		<div class="flex justify-center">
 			<h1 class="text-[20px] font-semibold mt-[40px] mb-[20px]">Manage Writing</h1>
 		</div>
-		<div class="">
-			<div class="flex justify-between">
-				<Button class="w-auto px-2 py-[3px] rounded-[5px] bg-white flex items-center gap-1">
-					<p class="text-black text-[10px] font-medium">All</p>
-					<Icon icon="octicon:triangle-up-16" color="black" class="rotate-180" />
-				</Button>
+		<div class="mt-5">
+			<div class="flex justify-end">
 				<Button
 					class="w-auto px-2 py-[3px] rounded-[5px] bg-[#F7B155] flex items-center gap-1"
 					on:click={() => {
