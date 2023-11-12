@@ -68,20 +68,20 @@
 			<!-- <Recommend /> -->
 		</div>
 		<!-- comment -->
-		<a href="/category/detailBook/detailEP/commentEP">
-			<div class="flex flex-row items-center mt-4">
-				<h1 class="text-xl font-medium">Top comment</h1>
-				<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" class="mt-1" />
-			</div>
-			<div class="p-3 mt-4">
-				{#if isDataLoaded1}
-					{#each comments as comment}
-						<CommentBook {comment}/>
-					{/each}
-				{:else}
-					<p>Loading...</p>
-				{/if}
-			</div>
-		</a>
+		<!-- <a href="/category/detailBook/detailEP/commentEP"> -->
+		<div class="flex flex-row items-center mt-4">
+			<h1 class="text-xl font-medium">Top comment</h1>
+			<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" class="mt-1" />
+		</div>
+		<div class="p-3 mt-4">
+			{#if isDataLoaded1}
+				{#each comments as comment}
+					<CommentBook {comment} />
+				{/each}
+			{:else}
+				<p>Loading...</p>
+			{/if}
+		</div>
+		<!-- </a> -->
 	</div>
 </div>
