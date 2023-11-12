@@ -1,67 +1,37 @@
 <script>
 
-    // import { onMount } from 'svelte';
-    import axios from 'axios';
-
     let usernameInput = '';
 	let emailInput = '';
 	let passwordInput = '';
     let bodInput = '';
-    // data = JSON.stringify(data)
 
     const addUser = async () => {
-        const dataToAdd = {
-            email: emailInput,
-            username: usernameInput,
-            password: passwordInput,
-            role: ["reader"],
-            createdDate: new Date(),
-            birthDate: new Date(bodInput)
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "email": emailInput,
+            "username": usernameInput,
+            "password": passwordInput,
+            "role": ["reader"],
+            "createdDate": new Date(),
+            "birthDate": new Date(bodInput)
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
-        console.log("dataToAdd: ", dataToAdd)
 
-        try {
-            const res = await axios.post('http://localhost:8082/user-service/users', dataToAdd, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+        fetch("http://localhost:8082/user-service/users", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log("Add User Successfully: ", result))
+        .catch(error => console.log("Add User Error: ", error));
 
-            console.log('Add User Frontend Successfully');
-            console.log('Response:', res.dataToAdd);
-        } catch (error) {
-            console.error('Fail to Add User:', error);
-            console.error('Error Details:', error.response); // Log the detailed error response
-        }
-    };
-
-    // var myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
-
-    // var raw = JSON.stringify({
-    //     "email": "User2@gmail.com",
-    //     "username": "User2",
-    //     "password": "12345",
-    //     "role": [
-    //         "reader",
-    //         "writer"
-    //     ],
-    //     "createdDate": "2023-11-10T15:33:42.583+00:00",
-    //     "birthDate": "2023-11-10T15:33:42.583+00:00"
-    // });
-
-    // var requestOptions = {
-    //     method: 'POST',
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: 'follow'
-    // };
-
-    // fetch("http://localhost:8082/user-service/users", requestOptions)
-    //     .then(response => response.text())
-    //     .then(result => console.log(result))
-    //     .catch(error => console.log('error', error));
-
+    }
+    
     let myNotBindDate = (new Date()).toJSON().slice(0, 10);
 	let myBindDate = (new Date()).toJSON().slice(0, 10);
 	// $:console.log(myBindDate)

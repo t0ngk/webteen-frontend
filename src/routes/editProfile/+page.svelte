@@ -12,23 +12,26 @@
 	let passwordInput = '';
 
 	const findUser = async () => {
+
         try {
-            const res = await axios.get('http://localhost:8082/user-service/getUsers/7fd3e37e-48ac-4721-891c-fda7b4e2982c') // ใส่ id ตรงนี้
+            const res = await axios.get('http://localhost:8082/user-service/getUsers/b862595f-3ff3-420e-9ec6-fc65d7547059') // change id here naa
 			userData = res.data
 			usernameInput = userData.username;
 			emailInput = userData.email;
 			passwordInput = userData.password;
 
             console.log('Find User Frontend Successfully');
+			console.log('passwordInput', passwordInput)
             console.log('Response:', res.data);
         } catch (error) {
             console.error('Fail to Find User:', error);
-            console.error('Error Details:', error.response); // Log the detailed error response
+            console.error('Error Details:', error.response); 
         }
     };
 
 	const saveUser = async () => {
 		const dataToUpdate = {
+			userId: "b862595f-3ff3-420e-9ec6-fc65d7547059", // change id here naa
 			username: usernameInput,
 			email: emailInput,
 			password: passwordInput
@@ -40,7 +43,7 @@
             console.log('Response:', res.data);
         } catch (error) {
             console.error('Fail to Find User:', error);
-            console.error('Error Details:', error.response); // Log the detailed error response
+            console.error('Error Details:', error.response); 
         }
     };
 
@@ -71,10 +74,10 @@
 		</div>
 
         <div class="mx-6">
-            <p>Display Name</p>
+            <!-- <p>Display Name</p>
             <div class="flex border-b border-[#979797] py-1 mb-2">
                 <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Display Name" aria-label="displayname">
-            </div>
+            </div> -->
 
             <p>Username</p>
             <div class="flex border-b border-[#979797] py-1 mb-2">
