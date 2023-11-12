@@ -2,6 +2,50 @@
 	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import { Button } from 'flowbite-svelte';
+
+	import axios from 'axios';
+	import { onMount } from 'svelte';
+
+	let userData = {}
+	let usernameInput = '';
+	let emailInput = '';
+	let passwordInput = '';
+
+	const findUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:8082/user-service/getUsers/7fd3e37e-48ac-4721-891c-fda7b4e2982c') // ใส่ id ตรงนี้
+			userData = res.data
+			usernameInput = userData.username;
+			emailInput = userData.email;
+			passwordInput = userData.password;
+
+            console.log('Find User Frontend Successfully');
+            console.log('Response:', res.data);
+        } catch (error) {
+            console.error('Fail to Find User:', error);
+            console.error('Error Details:', error.response); // Log the detailed error response
+        }
+    };
+
+	const saveUser = async () => {
+		const dataToUpdate = {
+			username: usernameInput,
+			email: emailInput,
+			password: passwordInput
+		};
+		console.log("dataToUpdate: ", dataToUpdate)
+        try {
+            const res = await axios.put('http://localhost:8082/user-service/users', dataToUpdate)
+            console.log('Find User Frontend Successfully');
+            console.log('Response:', res.data);
+        } catch (error) {
+            console.error('Fail to Find User:', error);
+            console.error('Error Details:', error.response); // Log the detailed error response
+        }
+    };
+
+	onMount(findUser);
+
 </script>
 
 <div class="h-full w-full justify-items-center">
@@ -14,7 +58,7 @@
 			<Icon icon="ion:chevron-back" color="white" class="text-[30px] absolute top-4" />
 		</button>
 		<p class="text-xl font-semibold text-center flex-grow">Edit Profile</p>
-		<button class="mr-4 text-lg">Save</button>
+		<button class="mr-4 text-lg" on:click={saveUser}>Save</button>
 	</div>
 
 	<div class="w-full">
@@ -34,17 +78,17 @@
 
             <p>Username</p>
             <div class="flex border-b border-[#979797] py-1 mb-2">
-                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="username" aria-label="username">
+                <input id="usernameInput" bind:value={usernameInput} class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="username" aria-label="username">
             </div>
 
             <p>Email</p>
             <div class="flex border-b border-[#979797] py-1 mb-2">
-                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="email"aria-label="email">
+                <input id="emailInput" bind:value={emailInput} class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="email"aria-label="email">
             </div>
 
             <p>Password</p>
             <div class="flex border-b border-[#979797] py-1 mb-2">
-                <input class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="*********" aria-label="password">
+                <input id="passwordInput" bind:value={passwordInput} class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none" type="password" placeholder="*********" aria-label="password">
             </div>
         </div>
 	</div>

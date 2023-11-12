@@ -4,6 +4,25 @@
 	import { Button } from 'flowbite-svelte';
 	import { goto } from '$app/navigation';
 	// import walletLinear from '@iconify/icons-solar/wallet-linear';
+
+	import axios from 'axios';
+	import { onMount } from 'svelte';
+
+	let userData = {}
+
+	const findUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:8082/user-service/getUsers/7fd3e37e-48ac-4721-891c-fda7b4e2982c') // ใส่ id ตรงนี้
+			userData = res.data
+            console.log('Find User Frontend Successfully');
+            console.log('Response:', res.data);
+        } catch (error) {
+            console.error('Fail to Find User:', error);
+            console.error('Error Details:', error.response); // Log the detailed error response
+        }
+    };
+
+	onMount(findUser);
 </script>
 
 <div class="h-full w-full p-2">
@@ -12,7 +31,7 @@
 			<div class="h-[43px] w-[43px] rounded-full border-solid border-[2.5px] border-amber-300"></div>
 			<div class="pl-3">
 				<p class="flex">
-					<b>username</b>
+					<b>{userData.username}</b>
 					<Button class="px-2" on:click={() => {
 						goto("/editProfile");
 					}}>
