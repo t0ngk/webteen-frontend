@@ -1,9 +1,11 @@
 <script>
 	import Icon from '@iconify/svelte';
+	import { page } from '$app/stores';
 	export let chapter;
+	export let bookId;
 </script>
 
-<a href="/category/detailBook/detailEP">
+<a href="/category/detailBook/{bookId}/{chapter._id}">
 	<div class="w-full h-16 border-b-0 flex flex-row">
 		<div class="h-16 w-24 bg-gray-300">
 			<img src={chapter.cover} alt="" class="w-28 h-full object-cover" />

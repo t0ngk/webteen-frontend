@@ -65,7 +65,7 @@
 	<!-- <div class="divide-y divide-white"> -->
 	{#if isDataLoaded1}
 		{#each chapters as chapter}
-			<Episode {chapter} />
+			<Episode {chapter} {bookId} />
 		{/each}
 	{:else}
 		<p>Loading...</p>
