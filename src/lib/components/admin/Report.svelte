@@ -1,5 +1,33 @@
 <script>
+	import Comment from './../feed/Comment.svelte';
+	import { onMount } from 'svelte';
 	import axios from 'axios';
+
+	let ReportComment = [];
+	const getReportComment = async () => {
+		try {
+			const resR = await axios.get(`http://localhost:8082/report-service/getReport`);
+			const resC = await axios.get(`http://localhost:8082/comment-service/getComment`);
+			// ReportComment = resR.data;
+			// CommentsId = resC.data;
+			for (const reportcomment of resR.data) {
+				for (const Comment of resC.data) {
+					// console.log('reportcomment ', reportcomment.reportTargetId);
+					// console.log('Comment ', Comment.commentId);
+					if(reportcomment.reportTargetId === Comment.commentId)
+					// console.log('reportcomment', Comment);
+					ReportComment.push(Comment);
+				}
+			}
+			console.log('ReportComment ', ReportComment);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
+	onMount(() => {
+		getReportComment();
+	});
+
 	const reportdata = [
 		{
 			image:
@@ -26,20 +54,13 @@
 			Text: 'Incididunt in aliquip duis aliqua ea veniam mollit eiusmod officia mollit et nostrud.',
 			date: '6 June 2024'
 		}
-        
 	];
-
-	const addApprovereport = async () => {
-        try {
-            const response = await axios.post(
-                'http://localhost:8082/approve-service/approve/report/a202ac35-63e7-47b6-8be1-2a9dd457e201/true'
-            );
-            console.log('Response from backend:', response.data);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
 </script>
+
+<!-- {#each ReportComment as comment}
+  <div><h1>{comment.commentId}</h1></div>
+{/each} -->
+
 
 {#each reportdata as item (item.username)}
 	<div class="p-4 my-4 border-b border-gray-500 flex space-x-6 relative">
@@ -50,7 +71,7 @@
 			<div class="flex items-center justify-between">
 				<p class="font-bold text-xl mb-5">{item.username}</p>
 				<div class="flex space-x-2 mt-[-20px]">
-					<button on:click={addApprovereport} class="bg-[#C13E3E] text-white px-2 py-[1.5px] rounded-full">Delete</button>
+					<button class="bg-[#C13E3E] text-white px-2 py-[1.5px] rounded-full">Delete</button>
 					<button class="bg-[#929292] text-white px-2 py-[1.5px] rounded-full">Decline</button>
 				</div>
 			</div>
