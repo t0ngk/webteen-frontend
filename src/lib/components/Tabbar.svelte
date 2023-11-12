@@ -21,11 +21,6 @@
 			path: '/category'
 		},
 		{
-			name: 'Feed',
-			icon: feedIcon,
-			path: '/feed'
-		},
-		{
 			name: 'Writing',
 			icon: editIcon,
 			path: '/writing'

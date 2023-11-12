@@ -20,10 +20,6 @@
 		{
 			name: 'Owned',
 			component: Owend
-		},
-		{
-			name: 'Creator',
-			component: Creator
 		}
 	];
 
