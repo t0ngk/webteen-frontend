@@ -12,16 +12,36 @@
 
 	const getDetailBooks = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/book-service/getBook/${bookId}`);
+			console.log('bookId', bookId);
+			const res = await axios.get(`http://localhost:8082/book-service/getBookById/${bookId}`);
 			Book = res.data;
 			isDataLoaded = true; // Set the flag to true once data is loaded
-			console.log(Book);
+			// console.log(Book);
 		} catch (error) {
 			console.error('Error fetching books:', error);
 		}
 	};
 
-	onMount(getDetailBooks);
+	let chapters = [];
+	let isDataLoaded1 = false;
+
+	const getChapter = async () => {
+		try {
+			const res = await axios.get(
+				`http://localhost:8082/book-service/getChapterByBookId/${bookId}`
+			);
+			chapters = res.data;
+			isDataLoaded1 = true; // Set the flag to true once data is loaded
+			console.log('hiiii chappter', chapters);
+		} catch (error) {
+			console.error('Error fetching books:', error);
+		}
+	};
+
+	onMount(() => {
+		getDetailBooks();
+		getChapter();
+	});
 </script>
 
 <div class="h-full w-full">
@@ -40,19 +60,16 @@
 				</p>
 			</div>
 		</div>
-		<img
-			src={Book.cover}
-			alt=""
-			class="w-full h-72 object-cover"
-		/>
+		<img src={Book.cover} alt="" class="w-full h-72 object-cover" />
 	</div>
 	<!-- <div class="divide-y divide-white"> -->
-	<p>bookID----{bookId}</p>
-	<Episode />
-	<Episode />
-	<Episode />
-	<Episode />
-	<Episode />
+	{#if isDataLoaded1}
+		{#each chapters as chapter}
+			<Episode {chapter} />
+		{/each}
+	{:else}
+		<p>Loading...</p>
+	{/if}
 
 	<!-- </div> -->
 </div>

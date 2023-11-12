@@ -2,14 +2,17 @@
 	/** @type {import('./$types').PageData} */
 	import CommentBook from '$lib/components/book/CommentBook.svelte';
 	import Recommend from '$lib/components/book/Recommend.svelte';
-
+	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
+
+	const chapterId = $page.params.chapterId;
 </script>
 
 <div class="w-full h-full">
 	<div class="w-full bg-black h-12 flex pl-3 items-center">
 		<Icon icon="uiw:menu" color="white" style="font-size: 25px" />
 	</div>
+	<p>chapterId----{chapterId}</p>
 	<div class="w-full h-5/6 bg-gray-300">content</div>
 	<!-- bar under contents -->
 	<div class="w-full h-10 bg-gray-700 flex items-center pl-3">

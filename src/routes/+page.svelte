@@ -24,13 +24,9 @@
 		}
 	};
 
-	onMount(getBooks);
-
-	const carouselPhotos = [
-		'https://picsum.photos/300/200?random=1',
-		'https://picsum.photos/300/200?random=2',
-		'https://picsum.photos/300/200?random=3'
-	];
+	onMount(() => {
+		getBooks();
+	});
 </script>
 
 <div class="h-full">
@@ -49,9 +45,12 @@
 	</div>
 	<div class="justify-center p-3">
 		<div class="slider overflow-x-scroll flex flex-row">
-			<Ranking />
-			<Ranking />
-			<Ranking />
+			<Ranking typeBook="Romantic" />
+			<Ranking typeBook="Drama" />
+			<Ranking typeBook="Comedy" />
+			<Ranking typeBook="Action" />
+			<Ranking typeBook="Horror" />
+			<Ranking typeBook="Fantasy" />
 		</div>
 	</div>
 
