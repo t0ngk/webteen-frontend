@@ -34,7 +34,7 @@
 			<div class="flex flex-row items-center h-16">
 				<p class="font-semibold mr-5 ml-3">{index + 1}</p>
 				<div class="w-[50px] h-[50px] bg-gray-300 rounded-lg">
-					<img src={book.cover} alt="" class="rounded-lg w-28 h-28 object-cover" />
+					<img src={book.cover} alt="" class="rounded-lg w-full h-full object-cover" />
 				</div>
 				<div class="ml-3">
 					<p class=" text-gray-300" style="font-size: 9px">{book.type}</p>

@@ -2,9 +2,9 @@
 	import Icon from '@iconify/svelte';
 	import { fade } from 'svelte/transition';
 	const carouselPhotos = [
-		'https://picsum.photos/300/200?random=1',
-		'https://picsum.photos/300/200?random=2',
-		'https://picsum.photos/300/200?random=3'
+		'https://cdn.discordapp.com/attachments/1161362796643090582/1173461603522457682/onepiece100.jpg?ex=65640a48&is=65519548&hm=67da2de63085c03bef4c92b2e915a9b8f92eb467841409a48d6f15c4c1320b9d&',
+		'https://cdn.discordapp.com/attachments/1161362796643090582/1173461603954462870/Surviving-as-an-Illegitimate-Princess.jpg?ex=65640a48&is=65519548&hm=2794fa5c33dec027d5897f5f76b2b3dc12fdaf66c4cc7de85441edfeb9a89978&',
+		'https://media.discordapp.net/attachments/1161362796643090582/1173458493433458708/solo-leveling.jpg?ex=65640762&is=65519262&hm=b297152a6f73cb330acbdac5ebe159e198b627e70365a141b9350519496c13a0&=&width=200&height=272'
 	];
 
 	let index = 0;
