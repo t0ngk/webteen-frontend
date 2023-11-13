@@ -57,11 +57,12 @@
 		// console.log(formData);
 
 		try {
-			const res = await axios.post(`http://localhost:8082/book-service/createBook`, formData, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-					'Content-Type': 'multipart/form-data'
-				}
+			const res = await axios.post(`http://localhost:8082/book-service/createBook`, {
+				title: title,
+				description: description,
+				category: category,
+				type: type,
+				cover: cover
 			});
 		} catch (error) {
 			console.error('Error fetching books:', error);

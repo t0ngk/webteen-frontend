@@ -23,11 +23,7 @@
 
 	const getChapters = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/book-service/getChapterByBookId/${book._id}`, {
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-					}
-			});
+			const res = await axios.get(`http://localhost:8082/book-service/getChapterByBookId/${book._id}`);
 			chapters = res.data;
 			isDataLoaded = true;
 			// console.log(chapters[0]);

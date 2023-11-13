@@ -10,11 +10,7 @@
 
 	const getFavorite = async () => {
 		try {
-			const res = await axios.get('http://localhost:8082/favorite-service/getFavorite',{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+			const res = await axios.get('http://localhost:8082/favorite-service/getFavorite');
 			FavoriteBooks = res.data;
 			isDataLoaded = true; // Set the flag to true once data is loaded
 			console.log(FavoriteBooks);
@@ -31,11 +27,7 @@
 			// สร้าง Promise สำหรับทุกการดึงข้อมูล Books
 			const bookPromises = FavoriteBooks.map(async (favorite) => {
 				const bookId = favorite.bookId;
-				const bookRes = await axios.get(`http://localhost:8082/favorite-service/getBook/${bookId}`,{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+				const bookRes = await axios.get(`http://localhost:8082/favorite-service/getBook/${bookId}`);
 				return bookRes.data;
 			});
 
@@ -55,11 +47,7 @@
         const bookID = bookId
         console.log(`favId >>>>>> ${bookID}`);
 		try {
-			const deleteRes = await axios.get(`http://localhost:8082/favorite-service/deleteFavorite/${bookID}`,{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+			const deleteRes = await axios.get(`http://localhost:8082/favorite-service/deleteFavorite/${bookID}`);
 			console.log(`Favorite with ID ${bookId} deleted`);
 		} catch (error) {
 			console.error('Error deleting favorite:', error);

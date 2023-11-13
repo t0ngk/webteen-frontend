@@ -15,11 +15,7 @@
 	let userId = 'b862595f-3ff3-420e-9ec6-fc65d7547059';
 	const getBooks = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/book-service/getBookByUserId/${userId}`,{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+			const res = await axios.get(`http://localhost:8082/book-service/getBookByUserId/${userId}`);
 			books = res.data;
 			isDataLoaded = true;
 			console.log(books);

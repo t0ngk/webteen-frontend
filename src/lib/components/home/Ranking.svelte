@@ -12,11 +12,7 @@
 
 	const getRank = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/ranking-service/rankBookType/${typeBook}`,{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+			const res = await axios.get(`http://localhost:8082/ranking-service/rankBookType/${typeBook}`);
 			ranked = res.data;
 			isDataLoaded1 = true; // Set the flag to true once data is loaded
 			console.log(typeBook, ranked);

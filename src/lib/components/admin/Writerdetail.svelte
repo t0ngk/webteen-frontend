@@ -20,12 +20,6 @@
         try {
             const response = await axios.post(
                 'http://localhost:8082/approve-service/approve/writer/b862595f-3ff3-420e-9ec6-fc65d7547059/true',
-                null,
-                {
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								}
             );
             console.log('Response from backend:', response.data);
         } catch (error) {

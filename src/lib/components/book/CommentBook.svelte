@@ -10,10 +10,6 @@
 			`http://localhost:8082/report-service/addReport/comment/${comment.commentId}`,
 			{method: 'POST',
 			body: '',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-			},
 			redirect: 'follow'}
 		)
 			.then((response) => response.text())

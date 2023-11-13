@@ -9,11 +9,7 @@
 
 	const getBooks = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8082/ranking-service/getRecommendBook/Manga`,{
-										headers: {
-												Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-										}
-								});
+			const res = await axios.get(`http://localhost:8082/ranking-service/getRecommendBook/Manga`);
 			RecommendBooks = res.data;
 			isDataLoaded = true; // Set the flag to true once data is loaded
 			console.log(RecommendBooks);
