@@ -30,19 +30,21 @@
 		<Icon icon="pajamas:chevron-right" color="white" style="font-size: 30px" />
 	</div>
 	{#each ranked.slice(0, 3) as book, index}
-		<div class="flex flex-row items-center h-16">
-			<p class="font-semibold mr-5 ml-3">{index + 1}</p>
-			<div class="w-[50px] h-[50px] bg-gray-300 rounded-lg">
-				<img src={book.cover} alt="" class="rounded-lg w-28 h-28 object-cover" />
-			</div>
-			<div class="ml-3">
-				<p class=" text-gray-300" style="font-size: 9px">{book.type}</p>
-				<p class="text-xs font-medium mb-1">{book.title}</p>
-				<div class="flex flex-row">
-					<img src={Image} class="h-2 w-2 rounded-full mt-0.5" alt="penname" />
-					<p class=" text-gray-400 ml-1" style="font-size: 9px">mairuu</p>
+		<a href="/category/detailBook/{book.bookId}">
+			<div class="flex flex-row items-center h-16">
+				<p class="font-semibold mr-5 ml-3">{index + 1}</p>
+				<div class="w-[50px] h-[50px] bg-gray-300 rounded-lg">
+					<img src={book.cover} alt="" class="rounded-lg w-28 h-28 object-cover" />
+				</div>
+				<div class="ml-3">
+					<p class=" text-gray-300" style="font-size: 9px">{book.type}</p>
+					<p class="text-xs font-medium mb-1">{book.title}</p>
+					<div class="flex flex-row">
+						<img src={Image} class="h-2 w-2 rounded-full mt-0.5" alt="penname" />
+						<p class=" text-gray-400 ml-1" style="font-size: 9px">mairuu</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		</a>
 	{/each}
 </div>
